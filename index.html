@@ -10,6 +10,7 @@
       content="A real mock interview, run by someone who's hired teens for their first job. Online or in person for Perth teens." />
 
     <link rel="canonical" href="https://jobcoachpert-h9rmrnjb.manus.space/" />
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://jobcoachpert-h9rmrnjb.manus.space/" />
@@ -26,16 +27,21 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!-- Banner ---------------------------------------------------------------
-      Swap in the real artwork by replacing images/fjr-banner.svg (or pointing
-      src at your own file). The original lives on Manus storage as
-      fjr_banner_3e3be417.png.
+    <!-- Masthead -------------------------------------------------------------
+      The logo is live text rather than an image, so it stays crisp at any
+      size, is selectable and readable by screen readers, and the flanking
+      rules space themselves off the monogram regardless of which font has
+      loaded. Reversed (cream-on-forest) colourway lives in css/style.css.
     -->
     <header class="banner">
-      <img
-        class="banner__image"
-        src="images/fjr-banner.svg"
-        alt="First Job Ready banner" />
+      <div class="logo">
+        <div class="logo__lockup">
+          <span class="logo__rule" aria-hidden="true"></span>
+          <span class="logo__mark">FJR</span>
+          <span class="logo__rule" aria-hidden="true"></span>
+        </div>
+        <div class="logo__word">First Job Ready</div>
+      </div>
     </header>
 
     <!-- Hero -->

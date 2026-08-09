@@ -115,15 +115,60 @@ h3 {
 
 .banner {
   width: 100%;
+  padding-block: 2.75rem;
   background: rgb(var(--forest));
   box-shadow: 0 4px 6px -1px rgb(43 43 40 / 0.12),
     0 2px 4px -2px rgb(43 43 40 / 0.12);
 }
 
-.banner__image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+/* ==========================================================================
+   Logo
+   --------------------------------------------------------------------------
+   Reversed colourway: cream type on the Deep Forest masthead, terracotta
+   rules. For the primary colourway on a light background, set .logo__mark and
+   .logo__word to rgb(var(--forest)).
+   ========================================================================== */
+
+.logo {
+  text-align: center;
+  color: rgb(var(--on-forest));
+}
+
+.logo__lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.7rem, 3vw, 1.1rem);
+}
+
+.logo__rule {
+  flex: none;
+  width: clamp(1.75rem, 7vw, 2.75rem);
+  height: 3px;
+  border-radius: 2px;
+  background: rgb(var(--accent));
+}
+
+.logo__mark {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 9vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  /* letter-spacing adds a trailing gap; pull it back so the mark sits centred
+     between the two rules */
+  margin-right: -0.06em;
+}
+
+.logo__word {
+  margin-top: 0.85rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 3vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  /* same trailing-gap correction, applied to the whole line */
+  text-indent: 0.42em;
 }
 
 /* ==========================================================================

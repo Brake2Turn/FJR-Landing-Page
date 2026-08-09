@@ -24,10 +24,22 @@ moved three things off the original design:
 3. The "Most Popular" badge label is charcoal rather than white — white on
    terracotta measures 2.7:1, which is unreadable. Charcoal gives 5.3:1.
 
-**Still outstanding** — the banner artwork. The original is hosted on Manus
-storage (`fjr_banner_3e3be417.png`). `images/fjr-banner.svg` is a brand-coloured
-stand-in wordmark. Drop the real file into `images/` and update the one `src` in
-`index.html`.
+## Logo
+
+The masthead carries the FJR lockup — monogram flanked by terracotta rules,
+wordmark beneath — in its reversed colourway (cream on Deep Forest).
+
+It is built as **live text, not an image**. The supplied artwork was a raster
+with a watermark, so it was rebuilt in HTML and CSS. That means it stays sharp
+at any size and on any display, adds no image request, is selectable and
+readable by screen readers, and the flanking rules space themselves off the
+monogram rather than sitting at fixed coordinates — so nothing collides or
+drifts if a font is slow to load or falls back.
+
+To use the primary colourway on a light background, set `.logo` to
+`color: rgb(var(--forest))`.
+
+`images/favicon.svg` uses the same monogram.
 
 ## Palette
 
@@ -101,7 +113,7 @@ Then open <http://localhost:8000>.
 ## Project structure
 
 ```
-index.html              Page markup
-css/style.css           Design tokens, reset, layout, components
-images/fjr-banner.svg   Placeholder banner — replace with the real artwork
+index.html            Page markup
+css/style.css         Brand tokens, reset, layout, components
+images/favicon.svg    FJR monogram favicon
 ```
