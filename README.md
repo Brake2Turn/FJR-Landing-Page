@@ -89,8 +89,24 @@ rather than being pinned to the card's bottom edge, so they don't line up
 across the two cards when the descriptions differ in length. That's how the
 original renders. To align them, add `margin-top: auto` to `.button`.
 
-The buttons are also inert — the original had no booking link wired up. Both
-are marked with a `TODO` in `index.html`.
+## Booking
+
+Both CTAs are anchors pointing at Calendly, opening in a new tab so the
+landing page stays put:
+
+| Package | Event |
+| --- | --- |
+| Practice Interview + Feedback | `calendly.com/firstjobready/30min` |
+| Full Coaching Session | `calendly.com/firstjobready/60-minute-mock-interview-coaching-session` |
+
+Since both buttons read "Book Now", each carries an `aria-label` naming its
+package so the two are distinguishable out of context.
+
+**Worth checking:** the first card advertises **20 minutes**, but its Calendly
+event is `30min`. One of the two is probably wrong.
+
+To open bookings in the same tab instead, drop `target` and `rel` from the two
+anchors.
 
 ## Local preview
 
