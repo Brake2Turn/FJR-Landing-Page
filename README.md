@@ -9,14 +9,18 @@ compiled bundle. This repo reimplements it as plain HTML and CSS with no build
 step, no framework, and no JavaScript, so it can be hosted anywhere that serves
 static files.
 
-## What's faithful, and what isn't
+## Where the page came from
 
-**From the original** — all copy is verbatim, and the section order, layout,
-spacing, type scale, responsive breakpoints, card treatments, hover states and
-gradient dividers are derived from the original markup.
+**Structure from the original** — section order, layout, spacing, type scale,
+responsive breakpoints, card treatments, hover states and gradient dividers are
+all derived from the original Manus markup.
 
-**From the brand guide** — the palette and type pairing. Applying the guide
-moved three things off the original design:
+**Copy has since moved on.** The hero and the "What We Coach" section were
+rewritten and no longer match the original; the pricing cards, steps and footer
+still carry the original wording.
+
+**Palette and type from the brand guide.** Applying the guide moved three
+things off the original design:
 
 1. The header banner and footer are now **Deep Forest** (the guide assigns that
    colour to both).
@@ -54,7 +58,12 @@ Straight from the brand guide, defined once at the top of `css/style.css`:
 | Neutral | Charcoal Text | `#2B2B28` |
 
 Terracotta appears exactly once, on the "Most Popular" badge, per the guide's
-"use sparingly" note.
+"use sparingly" note. There the badge sweeps terracotta → champagne
+(`#E5C185`) → terracotta so it reads as premium rather than as a status chip.
+Champagne is a highlight stop for that gradient only, not a sixth brand
+colour. The label stays charcoal, which clears 4.5:1 at every point along the
+ramp (worst case 5.28:1 at the terracotta ends); white would drop to 1.71:1
+over the champagne.
 
 ### One accessibility caveat
 
@@ -82,29 +91,28 @@ only, sans-serif for body copy, buttons and UI text:
 
 Both load from Google Fonts.
 
-## Known quirk kept from the original
-
-In the pricing cards the "Book Now" buttons sit directly after the description
-rather than being pinned to the card's bottom edge, so they don't line up
-across the two cards when the descriptions differ in length. That's how the
-original renders. To align them, add `margin-top: auto` to `.button`.
-
 ## Booking
 
-Both CTAs are anchors pointing at Calendly, opening in a new tab so the
+All three CTAs are anchors pointing at Calendly, opening in a new tab so the
 landing page stays put:
 
-| Package | Event |
+| CTA | Event |
 | --- | --- |
+| Hero | `calendly.com/firstjobready/60-minute-mock-interview-coaching-session` |
 | Practice Interview + Feedback | `calendly.com/firstjobready/20min` |
 | Full Coaching Session | `calendly.com/firstjobready/60-minute-mock-interview-coaching-session` |
 
-Both durations now match the copy on their cards.
+Both card durations match the copy on their cards.
 
-Since both buttons read "Book Now", each carries an `aria-label` naming its
-package so the two are distinguishable out of context.
+Since every button reads "Book Now", each carries an `aria-label` naming its
+package so they are distinguishable out of context.
 
-To open bookings in the same tab instead, drop `target` and `rel` from the two
+In the pricing cards the buttons are pinned to the bottom edge with
+`margin-top: auto`, so they sit on the same line across both cards however
+long the descriptions run. The hero CTA takes `.button--inline`, which drops
+the full-width rule since that is a card treatment.
+
+To open bookings in the same tab instead, drop `target` and `rel` from the
 anchors.
 
 ## Local preview

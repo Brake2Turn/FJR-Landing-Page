@@ -17,6 +17,10 @@
   --primary: 91 140 110; /* Sage Green      #5B8C6E */
   --forest: 47 74 59; /* Deep Forest     #2F4A3B */
   --accent: 217 139 95; /* Warm Terracotta #D98B5F */
+  --accent-gold: 229 193 133; /* Champagne       #E5C185 — highlight stop that
+                                 lifts the terracotta toward gold on the
+                                 "Most Popular" badge. Not a standalone
+                                 brand colour; only used in that gradient. */
   --background: 250 246 240; /* Warm Cream      #FAF6F0 */
   --foreground: 43 43 40; /* Charcoal Text   #2B2B28 */
 
@@ -187,8 +191,11 @@ h3 {
 }
 
 .hero__title {
-  font-size: 2.25rem;
+  font-size: 1.875rem;
   margin-bottom: 1.5rem;
+  /* The headline runs long, so avoid a stranded last word rather than
+     balancing line lengths. */
+  text-wrap: pretty;
 }
 
 .hero__lede {
@@ -203,6 +210,10 @@ h3 {
 .hero__note {
   font-size: 0.875rem;
   color: rgb(var(--muted-foreground));
+}
+
+.hero__cta {
+  margin-top: 2rem;
 }
 
 /* ==========================================================================
@@ -314,18 +325,29 @@ h3 {
     0 8px 10px -6px rgb(43 43 40 / 0.12);
 }
 
-/* Terracotta is a highlight only — this badge is its single use on the page. */
+/* Terracotta is a highlight only — this badge is its single use on the page.
+   The sweep into champagne reads as premium rather than as a status chip; the
+   hairline and lifted shadow do the rest without adding a sixth colour. */
 .package__badge {
   position: absolute;
   top: 1rem;
   right: 1rem;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
-  background: rgb(var(--accent));
+  background: linear-gradient(
+    115deg,
+    rgb(var(--accent)) 0%,
+    rgb(var(--accent-gold)) 55%,
+    rgb(var(--accent-gold)) 70%,
+    rgb(var(--accent)) 100%
+  );
+  border: 1px solid rgb(255 255 255 / 0.45);
   color: rgb(var(--foreground));
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.4;
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 3px rgb(43 43 40 / 0.18);
 }
 
 .package__head {
@@ -393,6 +415,19 @@ h3 {
   transition: background-color 200ms, box-shadow 200ms;
 }
 
+/* Hero CTA: sized to its label rather than the full column width, which is a
+   card treatment. Declared after .button so source order wins the override —
+   both selectors are a single class. */
+.button--inline {
+  width: auto;
+}
+
+/* Pin the CTA to the bottom of its card so the buttons line up across
+   packages whatever length the descriptions run to. */
+.package .button {
+  margin-top: auto;
+}
+
 .button:hover,
 .button:focus-visible {
   background: rgb(var(--forest));
@@ -457,7 +492,7 @@ h3 {
 
 @media (min-width: 640px) {
   .hero__title {
-    font-size: 3rem;
+    font-size: 2.25rem;
   }
 }
 
@@ -467,7 +502,7 @@ h3 {
   }
 
   .hero__title {
-    font-size: 3.75rem;
+    font-size: 3rem;
   }
 
   .hero__lede {
