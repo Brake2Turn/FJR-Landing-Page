@@ -7,7 +7,7 @@
     <title>First Job Interview Coaching - Perth</title>
     <meta
       name="description"
-      content="Interview coaching in Perth for people preparing for their first job." />
+      content="A real mock interview, run by someone who's hired teens for their first job. Online or in person for Perth teens." />
 
     <link rel="canonical" href="https://jobcoachpert-h9rmrnjb.manus.space/" />
 
@@ -20,25 +20,159 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet" />
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!--
-      PLACEHOLDER — awaiting page content.
-
-      The head above is recovered verbatim from the live Manus site. The body
-      content still needs to be filled in from the rendered DOM of
-      https://jobcoachpert-h9rmrnjb.manus.space/ (the original is a React SPA,
-      so the copy lives in a compiled JS bundle rather than in the HTML source).
+    <!-- Banner ---------------------------------------------------------------
+      Swap in the real artwork by replacing images/fjr-banner.svg (or pointing
+      src at your own file). The original lives on Manus storage as
+      fjr_banner_3e3be417.png.
     -->
-    <main class="placeholder">
-      <h1>First Job Interview Coaching</h1>
-      <p class="placeholder__note">
-        Placeholder page. Content pending.
-      </p>
-    </main>
+    <header class="banner">
+      <img
+        class="banner__image"
+        src="images/fjr-banner.svg"
+        alt="First Job Ready banner" />
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero__title">
+          Most teens don't lose the interview on experience. They lose it on
+          nerves.
+        </h1>
+        <p class="hero__lede">
+          A real mock interview, run by someone who's hired teens for their
+          first job.
+        </p>
+        <p class="hero__note">Online or in person for Perth teens.</p>
+      </div>
+    </section>
+
+    <div class="rule" role="presentation"></div>
+
+    <!-- Tips -->
+    <section class="section" id="tips">
+      <div class="container">
+        <h2 class="section__title">What Actually Gets Teens Hired</h2>
+
+        <ol class="tips">
+          <li class="tip">
+            <span class="tip__marker" aria-hidden="true">1</span>
+            <div>
+              <h3 class="tip__title">Own one weakness, don't list them</h3>
+              <p class="tip__body">
+                Naming a fault in a self-aware way builds trust — dumping every
+                flaw or acting like you have none does the opposite.
+              </p>
+            </div>
+          </li>
+
+          <li class="tip">
+            <span class="tip__marker" aria-hidden="true">2</span>
+            <div>
+              <h3 class="tip__title">Ask a question</h3>
+              <p class="tip__body">
+                It shows more than any rehearsed answer you give.
+              </p>
+            </div>
+          </li>
+
+          <li class="tip">
+            <span class="tip__marker" aria-hidden="true">3</span>
+            <div>
+              <h3 class="tip__title">Show up, even if you're nervous</h3>
+              <p class="tip__body">
+                Look at the interviewer, react to what they say. That's what
+                gets noticed.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="rule" role="presentation"></div>
+
+    <!-- Pricing -->
+    <section class="section section--tinted" id="pricing">
+      <div class="container">
+        <h2 class="section__title section__title--center">Coaching Packages</h2>
+
+        <div class="packages">
+          <div class="package">
+            <div class="package__head">
+              <h3 class="package__name">Practice Interview + Feedback</h3>
+              <p class="package__price">$39</p>
+              <p class="package__duration">20 minutes</p>
+            </div>
+            <p class="package__body">
+              Have a go at a real interview, with real questions and written
+              feedback to work from.
+            </p>
+            <!-- TODO: point this at the booking flow -->
+            <button class="button" type="button">Book Now</button>
+          </div>
+
+          <div class="package package--featured">
+            <div class="package__badge">Most Popular</div>
+            <div class="package__head">
+              <h3 class="package__name">Full Coaching Session</h3>
+              <p class="package__price">$89</p>
+              <p class="package__duration">60 minutes</p>
+            </div>
+            <p class="package__body">
+              Turn your practice interview into feedback and coaching. Work on
+              what will help you feel confident, then finish with a mock
+              interview in real conditions.
+            </p>
+            <!-- TODO: point this at the booking flow -->
+            <button class="button" type="button">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="rule" role="presentation"></div>
+
+    <!-- After booking -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section__title section__title--tight">
+          What Happens After You Book
+        </h2>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step__marker" aria-hidden="true">1</span>
+            <h3 class="step__title">Pick an available session</h3>
+          </li>
+          <li class="step">
+            <span class="step__marker" aria-hidden="true">2</span>
+            <h3 class="step__title">
+              Choose whether you'd like to attend in person or online
+            </h3>
+          </li>
+          <li class="step">
+            <span class="step__marker" aria-hidden="true">3</span>
+            <h3 class="step__title">
+              Attend the session, we'll guide you through
+            </h3>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="rule" role="presentation"></div>
+
+    <footer class="footer">
+      <div class="container">
+        <p>First Job Ready • Perth, Australia</p>
+      </div>
+    </footer>
   </body>
 </html>

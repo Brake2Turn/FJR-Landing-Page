@@ -4,31 +4,45 @@ A static rebuild of the **First Job Interview Coaching – Perth** landing page,
 originally published on Manus at
 <https://jobcoachpert-h9rmrnjb.manus.space/>.
 
-The original is a React single-page app served from a compiled bundle. This
-repo reimplements it as plain HTML and CSS with no build step, so it can be
-hosted anywhere that serves static files.
+The original is a React single-page app (Tailwind + shadcn/ui) served from a
+compiled bundle. This repo reimplements it as plain HTML and CSS with no build
+step, no framework, and no JavaScript, so it can be hosted anywhere that serves
+static files.
 
-## Status
+## What's faithful, and what isn't
 
-⚠️ **Scaffold only — page content is not in place yet.**
+**Faithful** — all copy is verbatim from the original, and the section order,
+layout, spacing, type scale, responsive breakpoints, card treatments, hover
+states and gradient dividers are all derived from the original markup.
 
-The `<head>` in `index.html` (title, canonical URL, Open Graph and Twitter
-metadata, font loading) is recovered verbatim from the original. The `<body>`
-is a placeholder.
+**Reconstructed** — two things could not be recovered:
 
-The remaining work is to fill in the body from the original page's rendered
-DOM. Because the source is a SPA, View Source returns only `<div id="root">`
-— the copy has to come from DevTools → Elements → right-click `<div id="root">`
-→ Copy → Copy outerHTML.
+1. **Colours.** The original's compiled stylesheet wasn't retrievable, so the
+   shadcn token *roles* (`primary`, `secondary`, `accent`, `muted-foreground`,
+   …) are preserved but the hex values are a choice. All six live at the top of
+   `css/style.css` — edit those and the whole page retints.
+2. **Banner artwork.** The original banner is hosted on Manus storage
+   (`fjr_banner_3e3be417.png`). `images/fjr-banner.svg` is a stand-in. Drop the
+   real file into `images/` and update the one `src` in `index.html`.
 
 ## Typography
 
 Carried over from the original:
 
-- **Lora** (400–700) — display and headings
-- **Inter** (400–700) — body text
+- **Lora** (400–700) — headings and prices
+- **Inter** (300–700) — body text
 
-Both are loaded from Google Fonts.
+Both load from Google Fonts.
+
+## Known quirk kept from the original
+
+In the pricing cards the "Book Now" buttons sit directly after the description
+rather than being pinned to the card's bottom edge, so they don't line up
+across the two cards when the descriptions differ in length. That's how the
+original renders. To align them, add `margin-top: auto` to `.button`.
+
+The buttons are also inert — the original had no booking link wired up. Both
+are marked with a `TODO` in `index.html`.
 
 ## Local preview
 
@@ -51,6 +65,7 @@ Then open <http://localhost:8000>.
 ## Project structure
 
 ```
-index.html      Page markup (head recovered from original; body pending)
-css/style.css   Design tokens, reset, base typography
+index.html              Page markup
+css/style.css           Design tokens, reset, layout, components
+images/fjr-banner.svg   Placeholder banner — replace with the real artwork
 ```
