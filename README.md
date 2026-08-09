@@ -96,14 +96,13 @@ landing page stays put:
 
 | Package | Event |
 | --- | --- |
-| Practice Interview + Feedback | `calendly.com/firstjobready/30min` |
+| Practice Interview + Feedback | `calendly.com/firstjobready/20min` |
 | Full Coaching Session | `calendly.com/firstjobready/60-minute-mock-interview-coaching-session` |
+
+Both durations now match the copy on their cards.
 
 Since both buttons read "Book Now", each carries an `aria-label` naming its
 package so the two are distinguishable out of context.
-
-**Worth checking:** the first card advertises **20 minutes**, but its Calendly
-event is `30min`. One of the two is probably wrong.
 
 To open bookings in the same tab instead, drop `target` and `rel` from the two
 anchors.
