@@ -30,15 +30,14 @@
   --on-primary: 255 255 255;
   --on-forest: 250 246 240;
 
-  /* Accessibility note --------------------------------------------------
-     White on Sage Green is 3.87:1 — below the WCAG AA minimum of 4.5:1 for
-     text at this size. Every other pairing on the page passes. To fix it,
-     uncomment the line below: it darkens the sage by 18% toward Deep Forest
-     (#538065, 4.52:1) for button faces only, leaving the brand sage intact
-     everywhere else.
+  /* Button faces only ---------------------------------------------------
+     One step darker than the brand sage: #538065, an 18% shift toward Deep
+     Forest. White label text on brand sage measures 3.87:1, under the WCAG
+     AA minimum of 4.5:1 for text at this size; this clears it at 4.52:1.
+     Sage itself is untouched everywhere else on the page.
+     To go back to the brand sage exactly, set this to var(--primary).
      -------------------------------------------------------------------- */
-  --button-face: var(--primary);
-  /* --button-face: 83 128 101; */
+  --button-face: 83 128 101; /* #538065 */
 
   /* Layout */
   --container: 56rem; /* max-w-4xl */

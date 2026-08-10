@@ -65,21 +65,20 @@ colour. The label stays charcoal, which clears 4.5:1 at every point along the
 ramp (worst case 5.28:1 at the terracotta ends); white would drop to 1.71:1
 over the champagne.
 
-### One accessibility caveat
+### Button colour
 
-White on Sage Green measures **3.87:1** — under the WCAG AA minimum of 4.5:1
-for text at button size. That affects the two "Book Now" buttons. Every other
-pairing on the page passes, several comfortably.
+Buttons use `#538065`, one step darker than the brand sage — an 18% shift
+toward Deep Forest. White label text on brand sage measures 3.87:1, under the
+WCAG AA minimum of 4.5:1 for text at this size; the darker face clears it at
+4.52:1. Sage itself is unchanged everywhere else on the page.
 
-The brand sage is used as specified rather than silently altered. If you'd
-rather the buttons meet AA, uncomment one line in `css/style.css`:
+It is a single token at the top of `css/style.css`:
 
 ```css
-/* --button-face: 83 128 101; */
+--button-face: 83 128 101; /* #538065 */
 ```
 
-That darkens the sage by 18% toward Deep Forest (`#538065`, 4.52:1) for button
-faces only — the brand sage stays exactly as specified everywhere else.
+Set it to `var(--primary)` to go back to the brand sage exactly.
 
 ## Typography
 
