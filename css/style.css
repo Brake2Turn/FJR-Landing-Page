@@ -190,27 +190,28 @@ h3 {
   );
 }
 
+/* Sized with the section headings below — see the shared rule under Sections. */
 .hero__title {
-  font-size: 2.25rem;
   margin-bottom: 1.5rem;
   /* Short enough to run two lines, so even them up. */
   text-wrap: balance;
 }
 
-/* Everything under the headline sits at the page's small step (0.875rem), the
-   same size used by the card copy, durations and footer. */
+/* Matches the body copy in the sections below: same size, leading and colour,
+   held to a readable measure. */
 .hero__body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   max-width: 42rem;
-  font-size: 0.875rem;
-  line-height: 1.7;
   color: rgb(var(--muted-foreground));
 }
 
-.hero__cta {
+/* text-align centres the inline-level button without fighting .button's own
+   display and width, which are declared later in the cascade. */
+.hero__actions {
   margin-top: 2rem;
+  text-align: center;
 }
 
 /* ==========================================================================
@@ -229,8 +230,14 @@ h3 {
   );
 }
 
+/* One size step for the hero headline and every section heading, so they stay
+   in step at both breakpoints. */
+.hero__title,
 .section__title {
   font-size: 1.875rem;
+}
+
+.section__title {
   margin-bottom: 3rem;
 }
 
@@ -487,25 +494,16 @@ h3 {
    Breakpoints
    ========================================================================== */
 
-@media (min-width: 640px) {
-  .hero__title {
-    font-size: 3rem;
-  }
-}
-
 @media (min-width: 768px) {
   .hero {
     padding-block: 6rem 4rem;
-  }
-
-  .hero__title {
-    font-size: 3.75rem;
   }
 
   .section {
     padding-block: 5rem;
   }
 
+  .hero__title,
   .section__title {
     font-size: 2.25rem;
   }
