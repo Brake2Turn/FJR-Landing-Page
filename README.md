@@ -134,10 +134,14 @@ To remove it, delete the `<script>` block at the end of `<head>`.
 tracked itself — the Clarity snippet is only in `index.html`. Add the same
 `<script>` block to `privacy.html` if you would rather track both.
 
-The notice is a starting draft written without access to primary sources, and
-it carries an unfilled contact address. Both are flagged in the file with a
-`TODO`. It should be reviewed by someone qualified before the site takes real
-traffic.
+The notice is a starting draft written without access to primary sources, so
+it should be reviewed by someone qualified before the site takes real traffic.
+
+It carries **no contact details** by request. People who have booked can reach
+us by replying to their Calendly confirmation, and the notice says so; visitors
+who have not booked have no route to us except the OAIC. Adding an address
+later means restoring a short "Contact us" section and pointing sections 4, 6
+and 7 back at it.
 
 ## Local preview
 
