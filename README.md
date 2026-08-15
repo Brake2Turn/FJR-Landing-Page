@@ -122,12 +122,11 @@ it never blocks the page render, and it is the only JavaScript on the site.
 
 Two things worth knowing:
 
-- Clarity's terms put the duty of disclosure on the site owner. This page has
-  no privacy notice yet, and its audience includes minors, so a short privacy
-  statement is likely warranted before it sees real traffic.
-- Session replay captures what visitors type and click. Clarity masks form
-  fields by default, but the masking level is worth confirming in the Clarity
-  dashboard under **Settings → Masking**.
+- Clarity's terms put the duty of disclosure on the site owner. `privacy.html`
+  covers it, and is linked from the footer.
+- Masking is set to **strict** in the Clarity dashboard, so page text is hidden
+  in session replays. The privacy notice states this, so the two need to stay
+  in step — if the masking level changes, update the notice.
 
 To remove it, delete the `<script>` block at the end of `<head>`.
 
