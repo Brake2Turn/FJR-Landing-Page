@@ -114,6 +114,23 @@ the full-width rule since that is a card treatment.
 To open bookings in the same tab instead, drop `target` and `rel` from the
 anchors.
 
+## Analytics
+
+Microsoft Clarity (project `y2r8wl01qz`) is loaded from the end of `<head>` in
+`index.html`. It records heatmaps and session replays. The snippet is async, so
+it never blocks the page render, and it is the only JavaScript on the site.
+
+Two things worth knowing:
+
+- Clarity's terms put the duty of disclosure on the site owner. This page has
+  no privacy notice yet, and its audience includes minors, so a short privacy
+  statement is likely warranted before it sees real traffic.
+- Session replay captures what visitors type and click. Clarity masks form
+  fields by default, but the masking level is worth confirming in the Clarity
+  dashboard under **Settings → Masking**.
+
+To remove it, delete the `<script>` block at the end of `<head>`.
+
 ## Local preview
 
 No build tools required. From the project root:
