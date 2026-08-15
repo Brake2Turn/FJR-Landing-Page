@@ -163,7 +163,15 @@ h3 {
   margin-right: -0.06em;
 }
 
+/* Anchored variant used on subpages, where the lockup links home. */
+.logo--link {
+  display: block;
+  text-decoration: none;
+}
+
 .logo__word {
+  /* block so the margin applies whether this is a div or a span */
+  display: block;
   margin-top: 0.85rem;
   font-family: var(--font-body);
   font-size: clamp(0.75rem, 3vw, 0.95rem);
@@ -478,6 +486,56 @@ h3 {
 }
 
 /* ==========================================================================
+   Prose — long-form subpages such as the privacy notice
+   ========================================================================== */
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  /* Narrower than the container: long-form text needs a shorter measure than
+     the landing page's short blocks. */
+  max-width: 44rem;
+}
+
+.prose p,
+.prose li {
+  color: rgb(var(--muted-foreground));
+}
+
+.prose h2 {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  color: rgb(var(--foreground));
+}
+
+.prose ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prose strong {
+  color: rgb(var(--foreground));
+  font-weight: 600;
+}
+
+.prose a {
+  color: rgb(var(--forest));
+  text-underline-offset: 0.15em;
+}
+
+.prose a:hover {
+  text-decoration: none;
+}
+
+.prose__meta {
+  font-size: 0.875rem;
+}
+
+/* ==========================================================================
    Footer
    ========================================================================== */
 
@@ -487,6 +545,19 @@ h3 {
   color: rgb(var(--on-forest) / 0.85);
   text-align: center;
   font-size: 0.875rem;
+}
+
+.footer__links {
+  margin-top: 0.5rem;
+}
+
+.footer a {
+  color: rgb(var(--on-forest));
+  text-underline-offset: 0.15em;
+}
+
+.footer a:hover {
+  text-decoration: none;
 }
 
 /* ==========================================================================

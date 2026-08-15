@@ -131,6 +131,15 @@ Two things worth knowing:
 
 To remove it, delete the `<script>` block at the end of `<head>`.
 
+`privacy.html` describes what Clarity collects. It is deliberately **not**
+tracked itself — the Clarity snippet is only in `index.html`. Add the same
+`<script>` block to `privacy.html` if you would rather track both.
+
+The notice is a starting draft written without access to primary sources, and
+it carries an unfilled contact address. Both are flagged in the file with a
+`TODO`. It should be reviewed by someone qualified before the site takes real
+traffic.
+
 ## Local preview
 
 No build tools required. From the project root:
@@ -154,5 +163,6 @@ Then open <http://localhost:8000>.
 ```
 index.html            Page markup
 css/style.css         Brand tokens, reset, layout, components
+privacy.html          Privacy notice
 images/favicon.svg    FJR monogram favicon
 ```
