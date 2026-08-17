@@ -395,49 +395,78 @@ h3 {
   gap: 1.25rem;
 }
 
+/* The section behind these cards is tinted, so the cards carry colour of their
+   own to read as cards rather than as panels of the background: a sage bar along
+   the top edge and a sage wash fading out of the top-left corner. */
 .topic {
-  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  padding: 1.75rem 1.5rem 1.5rem;
   border: 1px solid rgb(var(--primary) / 0.25);
   border-radius: 0.75rem;
-  background: rgb(var(--surface));
+  background: radial-gradient(
+      130% 100% at 0% 0%,
+      rgb(var(--primary) / 0.14) 0%,
+      rgb(var(--primary) / 0) 62%
+    ),
+    rgb(var(--surface));
   box-shadow: 0 1px 2px 0 rgb(43 43 40 / 0.06);
   transition: box-shadow 300ms, border-color 300ms, transform 300ms;
 }
 
-/* Matches the lift on the pricing cards, so the page has one hover language. */
-.topic:hover {
-  border-color: rgb(var(--primary) / 0.5);
-  box-shadow: 0 10px 15px -3px rgb(43 43 40 / 0.1),
-    0 4px 6px -4px rgb(43 43 40 / 0.1);
-  transform: translateY(-0.25rem);
+.topic::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: rgb(var(--primary));
 }
 
-/* Numeral beside a short rule — the masthead lockup's arrangement, reused at a
-   smaller scale. Deliberately not the filled circle used by the steps section. */
-.topic__index {
+/* The lift matches the pricing cards. Border and shadow carry the state on
+   their own, so hover still reads where the transform does not run — reduced
+   motion, or a browser that has dropped it.
+
+   Guarded on (hover: hover) so a tap on a touch screen, which has no way to
+   leave an element, cannot strand a card in its hover state. */
+@media (hover: hover) {
+  .topic:hover {
+    border-color: rgb(var(--primary));
+    box-shadow: 0 12px 20px -6px rgb(43 43 40 / 0.16),
+      0 4px 8px -4px rgb(43 43 40 / 0.12);
+    transform: translateY(-0.25rem);
+  }
+}
+
+/* Numeral and title share a row, so the numeral anchors the heading instead of
+   floating above it. Alignment is to the top, since the titles wrap to two
+   lines in a narrow card. */
+.topic__head {
   display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  margin-bottom: 0.875rem;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
+/* A rounded square, not the filled circle the steps section uses, so the two
+   numbered sections do not read as the same component. Cream on this face
+   measures 4.2:1, clearing the 3:1 needed at 20px bold. */
 .topic__num {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.625rem;
+  background: rgb(var(--button-face));
+  color: rgb(var(--on-forest));
   font-family: var(--font-display);
-  font-size: 1.75rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   line-height: 1;
-  color: rgb(var(--primary));
-}
-
-.topic__rule {
-  width: 1.5rem;
-  height: 2px;
-  border-radius: 1px;
-  background: rgb(var(--accent));
 }
 
 .topic__title {
-  margin-bottom: 0.625rem;
+  padding-top: 0.3125rem; /* optically centres line one against the numeral */
   font-size: 1.0625rem;
   text-wrap: balance;
 }
@@ -471,11 +500,14 @@ h3 {
   transition: box-shadow 300ms, border-color 300ms, transform 300ms;
 }
 
-.package:hover {
-  border-color: rgb(var(--primary) / 0.5);
-  box-shadow: 0 10px 15px -3px rgb(43 43 40 / 0.1),
-    0 4px 6px -4px rgb(43 43 40 / 0.1);
-  transform: translateY(-0.25rem);
+/* Same (hover: hover) guard as the topic cards, for the same reason. */
+@media (hover: hover) {
+  .package:hover {
+    border-color: rgb(var(--primary));
+    box-shadow: 0 12px 20px -6px rgb(43 43 40 / 0.16),
+      0 4px 8px -4px rgb(43 43 40 / 0.12);
+    transform: translateY(-0.25rem);
+  }
 }
 
 .package--featured {
@@ -484,10 +516,12 @@ h3 {
     0 2px 4px -2px rgb(43 43 40 / 0.1);
 }
 
-.package--featured:hover {
-  border-color: rgb(var(--primary));
-  box-shadow: 0 20px 25px -5px rgb(43 43 40 / 0.12),
-    0 8px 10px -6px rgb(43 43 40 / 0.12);
+@media (hover: hover) {
+  .package--featured:hover {
+    border-color: rgb(var(--primary));
+    box-shadow: 0 20px 25px -5px rgb(43 43 40 / 0.12),
+      0 8px 10px -6px rgb(43 43 40 / 0.12);
+  }
 }
 
 /* Terracotta is a highlight only — this badge is its single use on the page.

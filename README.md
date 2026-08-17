@@ -23,15 +23,34 @@ checking that `.section--tinted` still lands on every other one.
 "What We Coach" is a row of three equal cards (`.topics` / `.topic`). Grid gives
 them a shared row height whatever length the copy runs to.
 
-Each card is numbered, and the numeral sits beside a short terracotta rule —
-the masthead lockup's arrangement reused at a smaller scale. That is deliberate:
-"What Happens After You Book" already numbers its steps with filled forest
-circles, and reusing those here would make two unrelated sections read as the
-same component.
+Each card is numbered. The numeral sits in a filled chip on the same row as the
+title, so it anchors the heading rather than floating above it, and the chip is
+a **rounded square** — "What Happens After You Book" numbers its steps with
+filled circles, and reusing that shape here would make two unrelated sections
+read as the same component.
 
 The `<ol>` carries the numbering semantically while the visible numerals are
 `aria-hidden`, so a screen reader announces each item's position once rather
 than twice.
+
+The cards carry their own colour, because the section behind them is tinted and
+a plain white panel on tinted ground barely reads as a card: a 4px sage bar
+along the top edge, a sage wash fading out of the top-left corner, and the
+numeral chip in `--button-face` with cream type (4.2:1, against the 3:1 needed
+at 20px bold).
+
+### Hover on the cards
+
+Both card types — `.topic` and `.package` — lift 4px on hover, with a darker
+border and a heavier shadow. Three things about that:
+
+- The border and shadow carry the state **on their own**, so the hover still
+  reads when the transform does not run.
+- The transform does not run under `prefers-reduced-motion: reduce`; that block
+  sits at the bottom of `css/style.css`.
+- All the hover rules are wrapped in `@media (hover: hover)`, so a tap on a
+  touch screen cannot strand a card in its hover state. Phones and tablets
+  therefore show no hover at all, by design.
 
 **Copy has since moved on.** The hero and "What We Coach" were rewritten, and
 "About Your Coach" and the FAQ are new. Only the pricing cards, the steps and
