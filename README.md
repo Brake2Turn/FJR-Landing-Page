@@ -104,12 +104,12 @@ Both load from Google Fonts.
 
 ## Booking
 
-All three CTAs are anchors pointing at Calendly, opening in a new tab so the
-landing page stays put:
+Both CTAs are anchors pointing at Calendly, opening in a new tab so the
+landing page stays put. The hero has no CTA of its own — booking happens from
+the pricing cards only.
 
 | CTA | Event |
 | --- | --- |
-| Hero | `calendly.com/firstjobready/60-minute-mock-interview-coaching-session` |
 | Practice Interview + Feedback | `calendly.com/firstjobready/20min` |
 | Full Coaching Session | `calendly.com/firstjobready/60-minute-mock-interview-coaching-session` |
 
@@ -121,13 +121,12 @@ it. Because line-through is not announced by screen readers, the markup carries
 No end date is set; `.package__sale-note` is styled and sits commented out in
 the markup, so adding "Sale ends …" later is a text edit.
 
-Since every button reads "Book Now", each carries an `aria-label` naming its
+Since both buttons read "Book Now", each carries an `aria-label` naming its
 package so they are distinguishable out of context.
 
 In the pricing cards the buttons are pinned to the bottom edge with
 `margin-top: auto`, so they sit on the same line across both cards however
-long the descriptions run. The hero CTA takes `.button--inline`, which drops
-the full-width rule since that is a card treatment.
+long the descriptions run.
 
 To open bookings in the same tab instead, drop `target` and `rel` from the
 anchors.
@@ -207,5 +206,9 @@ age-neutral.
 Native `<details>` accordions — no JavaScript, keyboard-operable for free, and
 the answers stay in the HTML so they remain findable while collapsed.
 
-Group labels are reader-facing rather than the brief's internal names: "Refunds
-and rescheduling" instead of "risk reversal". Order is unchanged.
+One flat list of five questions, no group headings. Ordered so the questions
+about what the session actually is land before the logistics.
+
+Two answers were removed from here on purpose: the refund question, which is
+covered by `terms.html` §5, and the price question, which the pricing cards
+already answer.
