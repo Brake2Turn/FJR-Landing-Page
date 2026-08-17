@@ -11,9 +11,19 @@ static files.
 
 ## Where the page came from
 
-**Structure from the original** — section order, layout, spacing, type scale,
-responsive breakpoints, card treatments, hover states and gradient dividers are
-all derived from the original Manus markup.
+**Structure from the original** — layout, spacing, type scale, responsive
+breakpoints, card treatments, hover states and gradient dividers are all derived
+from the original Manus markup.
+
+Section order has since diverged. It now runs: hero, What We Coach, About Your
+Coach, Coaching Packages, What Happens After You Book, FAQ. Tinted and plain
+backgrounds alternate down the page, so adding or reordering a section means
+checking that `.section--tinted` still lands on every other one.
+
+"What We Coach" is a row of three equal cards (`.topics` / `.topic`), not the
+numbered list it started as — the three items are parallel topics rather than
+steps in a sequence, so nothing is numbered. Grid gives them a shared row height
+whatever length the copy runs to.
 
 **Copy has since moved on.** The hero and "What We Coach" were rewritten, and
 "About Your Coach" and the FAQ are new. Only the pricing cards, the steps and
