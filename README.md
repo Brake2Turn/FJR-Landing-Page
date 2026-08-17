@@ -15,10 +15,21 @@ static files.
 breakpoints, card treatments, hover states and gradient dividers are all derived
 from the original Manus markup.
 
-Section order has since diverged. It now runs: hero, What We Coach, About Your
+Section order has since diverged. It now runs: hero, Why This Works, What We
 Coach, Coaching Packages, What Happens After You Book, FAQ. Tinted and plain
 backgrounds alternate down the page, so adding or reordering a section means
-checking that `.section--tinted` still lands on every other one.
+checking that `.section--tinted` still lands on every other one — reordering the
+two coaching sections meant moving the class between them.
+
+"Why This Works" replaced "About Your Coach": same slot, first-person copy, and
+three trust markers (`.trust`) sitting side by side under the prose instead of
+being stated inside it. They are a wrapping flex row, so they stack on a phone
+without needing a breakpoint.
+
+> The third marker reads "Dozens of interviews conducted" to agree with the copy
+> directly above it, which says *dozens*. If the real figure is 100+, change both
+> together — a badge claiming 100+ over a paragraph saying dozens undercuts the
+> section it is meant to support.
 
 "What We Coach" is a row of three equal cards (`.topics` / `.topic`). Grid gives
 them a shared row height whatever length the copy runs to.
@@ -53,8 +64,8 @@ border and a heavier shadow. Three things about that:
   therefore show no hover at all, by design.
 
 **Copy has since moved on.** The hero and "What We Coach" were rewritten, and
-"About Your Coach" and the FAQ are new. Only the pricing cards, the steps and
-the footer still carry original wording.
+"Why This Works" and the FAQ are new. Only the pricing cards, the steps and the
+footer still carry original wording.
 
 **Audience is early-career, not teens.** The word "teen" appears nowhere on the
 landing page — the framing is anyone early in their career, including first
@@ -141,9 +152,19 @@ Both load from Google Fonts.
 
 ## Booking
 
-Both CTAs are anchors pointing at Calendly, opening in a new tab so the
-landing page stays put. The hero has no CTA of its own — booking happens from
-the pricing cards only.
+The two pricing CTAs are anchors pointing at Calendly, opening in a new tab so
+the landing page stays put.
+
+The hero's "Book Now" is **not** one of them: it is an in-page anchor to
+`#pricing`, so the visitor picks a package before Calendly opens. It stays in the
+same tab, and `scroll-behavior: smooth` on `html` glides down instead of jumping
+— set inside `@media (prefers-reduced-motion: no-preference)`, so anyone who has
+asked for less motion gets the instant jump. `.section` carries a
+`scroll-margin-top` so the heading does not land flush against the top edge.
+
+Unlike the card buttons it is sized to its label, via `.button--inline`. The
+card buttons are `width: 100%` to fill their cards; that same rule in the hero
+would run a button the full width of the page.
 
 | CTA | Event |
 | --- | --- |
@@ -285,18 +306,19 @@ Two mechanisms hold that up, and both matter if the layout changes:
 the full width of the photo fits, so it only affects narrow screens, where it
 keeps the handshake rather than the anxious half.
 
-## About Your Coach illustration
+## Illustrations
 
-One `.art` placeholder remains under "About Your Coach": dashed edge, tinted
-ground, concept named in the middle, sized to reserve roughly the footprint the
-real sketch will take.
+There are none on the page, and no placeholders left either.
 
-Style direction: hand-drawn / sketchbook, loose linework, accent colour used
-sparingly, faceless, age-neutral.
+The clipboard placeholder went out with the "About Your Coach" section it sat
+in — the copy that replaced it does not call for artwork, and a dashed
+placeholder box is visible to every visitor. The `.art` styles were removed with
+it. The two-chairs pencil sketch was never uploaded and lost its slot to the
+photograph.
 
-> The earlier two-chairs pencil sketch (`images/hero-interview.png`) is no
-> longer referenced anywhere — the photograph took the hero slot. Nothing is
-> broken by that, but the sketch currently has no home on the page.
+If a sketch does arrive, the style direction still stands: hand-drawn /
+sketchbook, loose linework, accent colour used sparingly, faceless,
+age-neutral.
 
 ## FAQ
 

@@ -90,6 +90,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* The hero CTA is an in-page jump to the pricing cards, and gliding there keeps
+   the visitor oriented. Opt-in rather than opt-out, so anyone who has asked for
+   less motion simply never gets it. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 /* Serif is reserved for headlines and section titles. */
 h1,
 h2,
@@ -271,7 +280,11 @@ h3 {
   color: rgb(var(--on-forest) / 0.88);
 }
 
-/* The hero has no CTA of its own — booking happens from the pricing cards. */
+/* Left-aligned under the copy, inside the heavy end of the desktop scrim, so it
+   sits with the text rather than floating over the photograph. */
+.hero__actions {
+  margin-top: 2.25rem;
+}
 
 /* ==========================================================================
    Sections
@@ -279,6 +292,8 @@ h3 {
 
 .section {
   padding-block: 4rem;
+  /* Breathing room when the hero CTA jumps to #pricing. */
+  scroll-margin-top: 1.5rem;
 }
 
 .section--tinted {
@@ -309,7 +324,10 @@ h3 {
 }
 
 /* ==========================================================================
-   Trust badges — scannable credibility under the coach copy
+   Trust badges — three scannable markers under the "Why This Works" copy
+   --------------------------------------------------------------------------
+   A wrapping flex row, so they sit side by side on a desktop and stack down
+   naturally on a phone without a breakpoint.
    ========================================================================== */
 
 .trust {
@@ -342,44 +360,6 @@ h3 {
 }
 
 /* ==========================================================================
-   Illustration placeholders
-   --------------------------------------------------------------------------
-   Deliberately obvious: dashed edge, tinted ground, concept named in the
-   middle. Reserves roughly the footprint the real sketch will take, so dropping
-   the artwork in does not shift the layout. Replace the whole .art element with
-   an <img>, carrying the spacing over to it.
-   ========================================================================== */
-
-.art {
-  display: grid;
-  place-items: center;
-  max-width: 20rem;
-  min-height: 10.5rem;
-  padding: 1rem;
-  border: 2px dashed rgb(var(--primary) / 0.45);
-  border-radius: 0.75rem;
-  background: rgb(var(--primary) / 0.06);
-  text-align: center;
-}
-
-.art__label {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: rgb(var(--muted-foreground));
-}
-
-/* Left-aligned with the hero text. It was centred to pair with the hero CTA;
-   with that button gone there is nothing to centre against. */
-.art--hero {
-  margin-top: 2.25rem;
-}
-
-.art--coach {
-  margin-top: 2rem;
-}
-
-/* ==========================================================================
    What we coach — a row of equal cards
    --------------------------------------------------------------------------
    Grid rather than flex so the three cards share a row height automatically,
@@ -395,9 +375,9 @@ h3 {
   gap: 1.25rem;
 }
 
-/* The section behind these cards is tinted, so the cards carry colour of their
-   own to read as cards rather than as panels of the background: a sage bar along
-   the top edge and a sage wash fading out of the top-left corner. */
+/* The cards carry colour of their own — a sage bar along the top edge and a
+   sage wash fading out of the top-left corner — so they read as cards on either
+   ground, tinted or plain cream. Their face is only a shade off the page. */
 .topic {
   position: relative;
   overflow: hidden;
@@ -640,6 +620,13 @@ h3 {
    packages whatever length the descriptions run to. */
 .package .button {
   margin-top: auto;
+}
+
+/* Sized to its label instead of its container. The pricing buttons fill their
+   cards, but a full-width button in the hero would run the whole page. */
+.button--inline {
+  width: auto;
+  padding-inline: 2.25rem;
 }
 
 .button:hover,
