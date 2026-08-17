@@ -241,8 +241,8 @@ h3 {
   z-index: -1;
   background: linear-gradient(
     180deg,
-    rgb(var(--hero-scrim) / 0.9),
-    rgb(var(--hero-scrim) / 0.84)
+    rgb(var(--hero-scrim) / 0.85),
+    rgb(var(--hero-scrim) / 0.77)
   );
 }
 

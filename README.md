@@ -192,46 +192,61 @@ images/favicon.svg    FJR monogram favicon
 
 The hero is a photograph behind a dark scrim, with the copy over it.
 
-`index.html` references **`images/hero-before-after.jpg`** (1828 × 861, the
-split before/after interview shot). **The file is not in the repo yet** and has
-to be uploaded. Save it as **JPEG** — as a PNG a photo this size runs several
-megabytes.
+| File | Size | Dimensions |
+| --- | --- | --- |
+| `images/hero-before-after.jpg` | 103 KB | 1823 × 863 |
+| `images/hero-before-after-960.jpg` | 40 KB | 960 × 454 |
 
-### Why it does not break while the file is missing
+Served through `srcset` with `sizes="100vw"`, so phones fetch the 960 px file
+and desktops the full one.
+
+### Provenance
+
+The photo arrived in the repo as `hero-before-after.jpg.png` — a 1.46 MB **PNG**
+with a doubled extension, so the page could not find it. It was re-encoded here
+to progressive JPEG at quality 82 (4:2:2 chroma), which is a **94% reduction**
+with no visible loss at this size, especially under the scrim. The misnamed
+original was removed.
+
+If the photo is ever replaced, re-encode rather than dropping a PNG in: a
+full-width photo as PNG costs well over a megabyte on the first paint.
+
+### Why it does not break if the image goes missing
 
 `.hero` paints the scrim colour (`--hero-scrim`, `#16221B`) as its own
-`background-color`, and the photo is a separate `<img>` layered behind the
-scrim. If the image is missing, slow, or fails to decode, the hero falls back to
-a solid dark band with the same cream type on it — a deliberate-looking hero
-rather than a broken one.
+`background-color`, with the photo as a separate `<img>` layered behind the
+scrim. A missing, slow or undecodable image leaves a solid dark band carrying
+the same cream type — a deliberate-looking hero rather than a broken one.
 
 ### Legibility
 
-Cream type over a photograph only works if the scrim guarantees it, so the scrim
-is measured rather than eyeballed. Rendering the hero with the text hidden and
-sampling the real composited pixels behind it gives:
+Cream on a photograph only works if the scrim guarantees it, so the scrim is
+measured, not eyeballed: the hero is rendered with its text hidden and the real
+composited pixels behind each line are sampled for the lightest one.
 
 | Width | Lightest background behind the copy | Cream on it |
 | --- | --- | --- |
-| 1280 px | `rgb(53, 62, 60)` | **10.24:1** |
-| 360 px | `rgb(42, 53, 48)` | **11.82:1** |
+| 1280 px | `rgb(71, 79, 72)` | **7.87:1** |
+| 360 px | `rgb(64, 71, 65)` | **8.88:1** |
 
-Both clear WCAG AAA (7:1), let alone AA. Measured against a stand-in whose right
-side ramps to pure white — brighter than the real photograph — so the real
-numbers should be at least this good.
+Both clear WCAG AAA (7:1). Desktop is the tighter of the two, because the bright
+window in the upper right of the frame reaches the right edge of the text column.
 
-Two things hold that up, and both matter if the layout changes:
+Two mechanisms hold that up, and both matter if the layout changes:
 
-- **Below 768 px** the scrim is near-uniform and heavy (0.90 → 0.84). Narrow
-  crops are unpredictable, so legibility cannot depend on which part of the
-  photo lands behind the text.
-- **At 768 px and up** the scrim turns directional — heaviest at the left where
-  the copy sits, lifting to 0.32 at the right so the handshake stays visible —
-  and the copy is capped at `34rem` to keep it inside the heavy end. Widening
-  that cap would push text onto the bright side of the frame.
+- **Below 768 px** the scrim is near-uniform (0.85 → 0.77). Narrow crops are
+  unpredictable, so legibility cannot depend on which part of the photo lands
+  behind the text. It was originally heavier still, and was lightened once
+  measurement showed the headroom — at 0.90 the photograph barely read on a
+  phone.
+- **At 768 px and up** the scrim turns directional — 0.94 at the left where the
+  copy sits, lifting to 0.32 at the right so the handshake stays visible — and
+  the copy is capped at `34rem` to keep it inside the heavy end. Widening that
+  cap, or lightening the left stop, would push the desktop figure below AAA.
 
-`object-position: 64% center` favours the right of the frame, so the anxious
-half crops away first on narrow screens.
+`object-position: 64% center` favours the right of the frame. At desktop widths
+the full width of the photo fits, so it only affects narrow screens, where it
+keeps the handshake rather than the anxious half.
 
 ## About Your Coach illustration
 
