@@ -68,16 +68,19 @@ border and a heavier shadow. Three things about that:
 footer still carry original wording.
 
 **Audience is early-career, not teens.** The word "teen" appears nowhere on the
-landing page — the framing is anyone early in their career, including first
-jobs, career changes and returns to work. Nerves stay in the copy as one reason
-people struggle, alongside lack of interview practice.
+site — the framing is anyone early in their career, including first jobs, career
+changes and returns to work. Nerves stay in the copy as one reason people
+struggle, alongside lack of interview practice.
 
-Age and consent content lives **only** in `terms.html` (minimum age 14, parent
-or guardian approval under 18), deliberately kept off the landing page.
+`privacy.html` was reconciled with that framing on 17 August 2026: it described
+the service as being "for teenagers" in two places, which contradicted both the
+landing page and the terms. It now opens with the early-career framing, and its
+"Young people and parents" section states the age floor as 14 and over, matching
+`terms.html` §4 rather than asserting an audience of its own.
 
-> ⚠️ `privacy.html` still describes the service as being "for teenagers" in two
-> places, which now contradicts the landing page and the terms. It was left
-> alone on instruction. Worth reconciling.
+Age and consent content is otherwise confined to `privacy.html` §4 and
+`terms.html` §4 (minimum age 14, parent or guardian approval under 18), and
+deliberately kept off the landing page.
 
 **Palette and type from the brand guide.** Applying the guide moved three
 things off the original design:
