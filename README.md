@@ -20,10 +20,18 @@ Coach, Coaching Packages, What Happens After You Book, FAQ. Tinted and plain
 backgrounds alternate down the page, so adding or reordering a section means
 checking that `.section--tinted` still lands on every other one.
 
-"What We Coach" is a row of three equal cards (`.topics` / `.topic`), not the
-numbered list it started as — the three items are parallel topics rather than
-steps in a sequence, so nothing is numbered. Grid gives them a shared row height
-whatever length the copy runs to.
+"What We Coach" is a row of three equal cards (`.topics` / `.topic`). Grid gives
+them a shared row height whatever length the copy runs to.
+
+Each card is numbered, and the numeral sits beside a short terracotta rule —
+the masthead lockup's arrangement reused at a smaller scale. That is deliberate:
+"What Happens After You Book" already numbers its steps with filled forest
+circles, and reusing those here would make two unrelated sections read as the
+same component.
+
+The `<ol>` carries the numbering semantically while the visible numerals are
+`aria-hidden`, so a screen reader announces each item's position once rather
+than twice.
 
 **Copy has since moved on.** The hero and "What We Coach" were rewritten, and
 "About Your Coach" and the FAQ are new. Only the pricing cards, the steps and

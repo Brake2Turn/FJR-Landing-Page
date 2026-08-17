@@ -105,15 +105,24 @@
     <div class="rule" role="presentation"></div>
 
     <!-- What we coach -----------------------------------------------------
-      Three parallel topics rather than a sequence, so they read as a row of
-      equal cards. No numbering: these are things covered, not steps in order.
+      An <ol> carries the numbering semantically; the visible numerals are
+      aria-hidden so a screen reader does not announce each position twice.
+
+      Each numeral sits beside a short terracotta rule, echoing the masthead
+      lockup where the monogram sits between two rules. That keeps these cards
+      visually distinct from the filled circles used by "What Happens After You
+      Book", so the two numbered sections do not read as the same component.
     -->
     <section class="section section--tinted" id="what-we-coach">
       <div class="container">
         <h2 class="section__title section__title--center">What We Coach</h2>
 
-        <ul class="topics">
+        <ol class="topics">
           <li class="topic">
+            <p class="topic__index" aria-hidden="true">
+              <span class="topic__num">1</span>
+              <span class="topic__rule"></span>
+            </p>
             <h3 class="topic__title">Make a Strong First and Last Impression</h3>
             <p class="topic__body">
               Most think a great first impression comes down to a firm
@@ -125,6 +134,10 @@
           </li>
 
           <li class="topic">
+            <p class="topic__index" aria-hidden="true">
+              <span class="topic__num">2</span>
+              <span class="topic__rule"></span>
+            </p>
             <h3 class="topic__title">Answering Difficult Questions</h3>
             <p class="topic__body">
               Some interview questions are designed to test how you handle
@@ -134,6 +147,10 @@
           </li>
 
           <li class="topic">
+            <p class="topic__index" aria-hidden="true">
+              <span class="topic__num">3</span>
+              <span class="topic__rule"></span>
+            </p>
             <h3 class="topic__title">Prepare for the Specific Role</h3>
             <p class="topic__body">
               You don't prepare for one role the same way you prepare for
@@ -142,7 +159,7 @@
               the person doing the hiring.
             </p>
           </li>
-        </ul>
+        </ol>
       </div>
     </section>
 

@@ -401,6 +401,39 @@ h3 {
   border-radius: 0.75rem;
   background: rgb(var(--surface));
   box-shadow: 0 1px 2px 0 rgb(43 43 40 / 0.06);
+  transition: box-shadow 300ms, border-color 300ms, transform 300ms;
+}
+
+/* Matches the lift on the pricing cards, so the page has one hover language. */
+.topic:hover {
+  border-color: rgb(var(--primary) / 0.5);
+  box-shadow: 0 10px 15px -3px rgb(43 43 40 / 0.1),
+    0 4px 6px -4px rgb(43 43 40 / 0.1);
+  transform: translateY(-0.25rem);
+}
+
+/* Numeral beside a short rule — the masthead lockup's arrangement, reused at a
+   smaller scale. Deliberately not the filled circle used by the steps section. */
+.topic__index {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.875rem;
+}
+
+.topic__num {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1;
+  color: rgb(var(--primary));
+}
+
+.topic__rule {
+  width: 1.5rem;
+  height: 2px;
+  border-radius: 1px;
+  background: rgb(var(--accent));
 }
 
 .topic__title {
@@ -801,5 +834,24 @@ h3 {
 
   .topics {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ==========================================================================
+   Reduced motion
+   --------------------------------------------------------------------------
+   Two components now lift on hover, so honour the preference in one place.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .package,
+  .topic,
+  .button {
+    transition: none;
+  }
+
+  .package:hover,
+  .topic:hover {
+    transform: none;
   }
 }
