@@ -15,9 +15,21 @@ static files.
 responsive breakpoints, card treatments, hover states and gradient dividers are
 all derived from the original Manus markup.
 
-**Copy has since moved on.** The hero and the "What We Coach" section were
-rewritten and no longer match the original; the pricing cards, steps and footer
-still carry the original wording.
+**Copy has since moved on.** The hero and "What We Coach" were rewritten, and
+"About Your Coach" and the FAQ are new. Only the pricing cards, the steps and
+the footer still carry original wording.
+
+**Audience is early-career, not teens.** The word "teen" appears nowhere on the
+landing page — the framing is anyone early in their career, including first
+jobs, career changes and returns to work. Nerves stay in the copy as one reason
+people struggle, alongside lack of interview practice.
+
+Age and consent content lives **only** in `terms.html` (minimum age 14, parent
+or guardian approval under 18), deliberately kept off the landing page.
+
+> ⚠️ `privacy.html` still describes the service as being "for teenagers" in two
+> places, which now contradicts the landing page and the terms. It was left
+> alone on instruction. Worth reconciling.
 
 **Palette and type from the brand guide.** Applying the guide moved three
 things off the original design:
@@ -103,6 +115,12 @@ landing page stays put:
 
 Both card durations match the copy on their cards.
 
+The 20-minute session is on sale: `$39` struck through with `<s>`, `$29` beside
+it. Because line-through is not announced by screen readers, the markup carries
+`visually-hidden` "Was" and "now" labels, so it reads as *"Was $39, now $29"*.
+No end date is set; `.package__sale-note` is styled and sits commented out in
+the markup, so adding "Sale ends …" later is a text edit.
+
 Since every button reads "Book Now", each carries an `aria-label` naming its
 package so they are distinguishable out of context.
 
@@ -164,8 +182,30 @@ Then open <http://localhost:8000>.
 ## Project structure
 
 ```
-index.html            Page markup
-css/style.css         Brand tokens, reset, layout, components
+index.html            Landing page
 privacy.html          Privacy notice
+terms.html            Terms & conditions
+css/style.css         Brand tokens, reset, layout, components
 images/favicon.svg    FJR monogram favicon
 ```
+
+## Illustration placeholders
+
+Two `.art` blocks stand in for artwork that has not been drawn yet — one in the
+hero, one under "About Your Coach". Each is deliberately obvious (dashed edge,
+tinted ground, concept named in the middle) and reserves roughly the footprint
+the final sketch will occupy, so dropping the image in will not shift the
+layout.
+
+Replace the whole `.art` element with the image, keeping the `--hero` /
+`--coach` modifier class for its spacing. Style direction: hand-drawn /
+sketchbook, loose linework, accent colour used sparingly, faceless,
+age-neutral.
+
+## FAQ
+
+Native `<details>` accordions — no JavaScript, keyboard-operable for free, and
+the answers stay in the HTML so they remain findable while collapsed.
+
+Group labels are reader-facing rather than the brief's internal names: "Refunds
+and rescheduling" instead of "risk reversal". Order is unchanged.
