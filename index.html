@@ -62,8 +62,22 @@
       </div>
     </header>
 
-    <!-- Hero -->
+    <!-- Hero -----------------------------------------------------------------
+      The photograph sits behind a dark forest scrim, so the copy stays legible
+      over whichever part of the image survives cropping at a given width. The
+      section also paints that scrim as a solid background-color, which means a
+      missing or slow image leaves a deliberate dark band rather than a broken
+      hero. alt="" because the copy carries the message — this is a backdrop.
+    -->
     <section class="hero">
+      <img
+        class="hero__media"
+        src="images/hero-before-after.jpg"
+        width="1828"
+        height="861"
+        alt=""
+        aria-hidden="true"
+        decoding="async" />
       <div class="container">
         <h1 class="hero__title">
           Get a Chance to Practice an Interview Before the Real Thing
@@ -80,18 +94,6 @@
           </p>
           <p>Online or in person, Perth.</p>
         </div>
-
-        <!-- Hero illustration. width and height are the file's intrinsic pixel
-             dimensions, so the browser reserves the correct space before the
-             image arrives and the text below it never jumps. No lazy loading:
-             this sits above the fold. -->
-        <img
-          class="illus illus--hero"
-          src="images/hero-interview.png"
-          width="1024"
-          height="501"
-          decoding="async"
-          alt="A pencil sketch of an interview setup: a plain wooden chair facing a leather office chair across a desk." />
       </div>
     </section>
 
@@ -150,7 +152,9 @@
           </li>
         </ul>
 
-        <!-- PLACEHOLDER: see the note on the hero illustration above. -->
+        <!-- PLACEHOLDER: awaiting the clipboard sketch. Style direction is
+             hand-drawn / sketchbook, loose linework, accent colour used
+             sparingly, faceless, age-neutral. -->
         <div class="art art--coach">
           <span class="art__label">Illustration: clipboard with checkmarks</span>
         </div>

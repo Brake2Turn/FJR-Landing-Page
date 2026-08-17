@@ -188,31 +188,63 @@ css/style.css         Brand tokens, reset, layout, components
 images/favicon.svg    FJR monogram favicon
 ```
 
-## Illustrations
+## Hero photograph
 
-### Hero — wired, file pending
+The hero is a photograph behind a dark scrim, with the copy over it.
 
-`index.html` references `images/hero-interview.png` (1024 × 501, the two-chairs
-sketch). **The file is not in the repo yet** and has to be uploaded — until it
-is, that slot shows the alt text instead of the image.
+`index.html` references **`images/hero-before-after.jpg`** (1828 × 861, the
+split before/after interview shot). **The file is not in the repo yet** and has
+to be uploaded. Save it as **JPEG** — as a PNG a photo this size runs several
+megabytes.
 
-`width` and `height` are set to the file's intrinsic pixels so the browser
-reserves the right space before the image arrives and the copy below never
-jumps. If the artwork is ever re-exported at different dimensions, update those
-two attributes to match, or the reserved box will be the wrong shape.
+### Why it does not break while the file is missing
 
-Rendered size is 448 px wide (`max-width: 28rem`), scaling down with the column
-on narrow screens — an accent, not full-width hero art.
+`.hero` paints the scrim colour (`--hero-scrim`, `#16221B`) as its own
+`background-color`, and the photo is a separate `<img>` layered behind the
+scrim. If the image is missing, slow, or fails to decode, the hero falls back to
+a solid dark band with the same cream type on it — a deliberate-looking hero
+rather than a broken one.
 
-### About Your Coach — still a placeholder
+### Legibility
 
-One `.art` block remains under "About Your Coach": dashed edge, tinted ground,
-concept named in the middle, sized to reserve roughly the footprint the real
-sketch will take. Replace it with an `.illus` image the same way the hero one
-was done.
+Cream type over a photograph only works if the scrim guarantees it, so the scrim
+is measured rather than eyeballed. Rendering the hero with the text hidden and
+sampling the real composited pixels behind it gives:
 
-Style direction for the remaining piece: hand-drawn / sketchbook, loose
-linework, accent colour used sparingly, faceless, age-neutral.
+| Width | Lightest background behind the copy | Cream on it |
+| --- | --- | --- |
+| 1280 px | `rgb(53, 62, 60)` | **10.24:1** |
+| 360 px | `rgb(42, 53, 48)` | **11.82:1** |
+
+Both clear WCAG AAA (7:1), let alone AA. Measured against a stand-in whose right
+side ramps to pure white — brighter than the real photograph — so the real
+numbers should be at least this good.
+
+Two things hold that up, and both matter if the layout changes:
+
+- **Below 768 px** the scrim is near-uniform and heavy (0.90 → 0.84). Narrow
+  crops are unpredictable, so legibility cannot depend on which part of the
+  photo lands behind the text.
+- **At 768 px and up** the scrim turns directional — heaviest at the left where
+  the copy sits, lifting to 0.32 at the right so the handshake stays visible —
+  and the copy is capped at `34rem` to keep it inside the heavy end. Widening
+  that cap would push text onto the bright side of the frame.
+
+`object-position: 64% center` favours the right of the frame, so the anxious
+half crops away first on narrow screens.
+
+## About Your Coach illustration
+
+One `.art` placeholder remains under "About Your Coach": dashed edge, tinted
+ground, concept named in the middle, sized to reserve roughly the footprint the
+real sketch will take.
+
+Style direction: hand-drawn / sketchbook, loose linework, accent colour used
+sparingly, faceless, age-neutral.
+
+> The earlier two-chairs pencil sketch (`images/hero-interview.png`) is no
+> longer referenced anywhere — the photograph took the hero slot. Nothing is
+> broken by that, but the sketch currently has no home on the page.
 
 ## FAQ
 
