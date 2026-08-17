@@ -188,18 +188,31 @@ css/style.css         Brand tokens, reset, layout, components
 images/favicon.svg    FJR monogram favicon
 ```
 
-## Illustration placeholders
+## Illustrations
 
-Two `.art` blocks stand in for artwork that has not been drawn yet — one in the
-hero, one under "About Your Coach". Each is deliberately obvious (dashed edge,
-tinted ground, concept named in the middle) and reserves roughly the footprint
-the final sketch will occupy, so dropping the image in will not shift the
-layout.
+### Hero — wired, file pending
 
-Replace the whole `.art` element with the image, keeping the `--hero` /
-`--coach` modifier class for its spacing. Style direction: hand-drawn /
-sketchbook, loose linework, accent colour used sparingly, faceless,
-age-neutral.
+`index.html` references `images/hero-interview.png` (1024 × 501, the two-chairs
+sketch). **The file is not in the repo yet** and has to be uploaded — until it
+is, that slot shows the alt text instead of the image.
+
+`width` and `height` are set to the file's intrinsic pixels so the browser
+reserves the right space before the image arrives and the copy below never
+jumps. If the artwork is ever re-exported at different dimensions, update those
+two attributes to match, or the reserved box will be the wrong shape.
+
+Rendered size is 448 px wide (`max-width: 28rem`), scaling down with the column
+on narrow screens — an accent, not full-width hero art.
+
+### About Your Coach — still a placeholder
+
+One `.art` block remains under "About Your Coach": dashed edge, tinted ground,
+concept named in the middle, sized to reserve roughly the footprint the real
+sketch will take. Replace it with an `.illus` image the same way the hero one
+was done.
+
+Style direction for the remaining piece: hand-drawn / sketchbook, loose
+linework, accent colour used sparingly, faceless, age-neutral.
 
 ## FAQ
 

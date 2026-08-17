@@ -300,12 +300,31 @@ h3 {
 }
 
 /* ==========================================================================
+   Illustrations
+   --------------------------------------------------------------------------
+   Real artwork. Sized as an accent rather than full-width hero art, with a
+   small radius so the sketch's own cream ground does not read as a hard-edged
+   rectangle against the page.
+   ========================================================================== */
+
+.illus {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.illus--hero {
+  margin-top: 2.25rem;
+  max-width: 28rem;
+}
+
+/* ==========================================================================
    Illustration placeholders
    --------------------------------------------------------------------------
    Deliberately obvious: dashed edge, tinted ground, concept named in the
    middle. Each reserves roughly the footprint the real sketch will take, so
    dropping the artwork in does not shift the layout. Replace the whole .art
-   element with the image, keeping the modifier class for its spacing.
+   element with an .illus image, carrying over the spacing.
    ========================================================================== */
 
 .art {
