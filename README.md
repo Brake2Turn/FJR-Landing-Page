@@ -252,13 +252,14 @@ images/favicon.svg    FJR monogram favicon
 
 ## Hero photograph
 
-The hero is a photograph behind a dark scrim at 1200 px and up, and a photograph
-above the copy below that. See "Showing both halves" below for why it switches.
+The hero is a photograph behind a dark scrim, with the copy over it: ranged
+left, vertically centred, capped at `34rem` so it stays inside the heavy end of
+the scrim.
 
 The headline — *Practice an Interview Before the Real Thing* — is the one piece
 of type on the page allowed to shout. It scales fluidly with
-`clamp(2.125rem, 5.2vw, 3.5rem)` rather than stepping at the breakpoint, sets
-tighter than the section headings, and closes with a short terracotta rule
+`clamp(2rem, 4.4vw, 3rem)` rather than stepping at the breakpoint, sets tighter
+than the section headings, and closes with a short terracotta rule
 (`.hero__title::after`). That rule and the "Most Popular" badge are the only two
 places the accent colour appears.
 
@@ -288,37 +289,27 @@ full-width photo as PNG costs well over a megabyte on the first paint.
 scrim. A missing, slow or undecodable image leaves a solid dark band carrying
 the same cream type — a deliberate-looking hero rather than a broken one.
 
-### Showing both halves
+### What the scrim shows
 
 The photograph is a **diptych**: the same person anxious on the left, shaking
-hands on the right. That only works if a visitor sees both halves, which drives
-the whole hero layout.
+hands on the right. The layout puts the copy over the left half, so the scrim is
+weighted to match.
 
-**At 1200 px and up** the copy is ranged left and pinned to the bottom of the
-section (`align-items: flex-end`), and the scrim runs **top to bottom** rather
-than left to right — 0.32 over the faces, 0.96 at the base where the type is. An
-earlier version weighted the scrim to the left, which read well but blacked out
-the anxious half almost entirely.
+**At 768 px and up** it runs left to right — 0.94 behind the copy, lifting to
+0.32 at the right edge so the handshake stays visible — and the copy is capped
+at `34rem` to keep it inside the heavy end. Widening that cap, or lightening the
+left stop, costs legibility.
 
-Both faces sit between roughly 12% and 44% of the frame's height, and the copy
-block runs about 500 px, so `min-height: 54rem` is what it takes for the copy to
-start *below* the faces rather than across them. Shortening that, or adding a
-line to the hero copy, puts type back over a face. It does make for a tall hero:
-the "Book Now" button lands near the fold on a short laptop screen. Trimming the
-hero's first paragraph — which duplicates the opening of "Why This Works" —
-would buy back about 100 px.
+The cost of this layout, accepted deliberately: the anxious half sits under the
+heaviest part of the scrim, so it reads as atmosphere rather than as the "before"
+of a before/after. A version that showed both halves is in the history at
+`013144e` — it worked by running the scrim top to bottom and dropping the copy
+below both faces, which needed a hero roughly 250 px taller.
 
-**Below 1200 px** the photo stops being a background: it becomes a full-width
-band at its own aspect ratio, whole frame visible, with the copy on the dark
-ground beneath. The reason is that a tall section fills with a wide photo by
-cropping its sides — at 1200 px the crop still leaves both figures whole, but at
-1024 px it starts eating the anxious half, and by 768 px only the middle 42% of
-the frame survives. A band shows all of it at any width.
-
-The hero reserves exactly the band's height as padding — `calc(100vw / 2.112)`,
-the image's own ratio — so the two never collide. **Change the photo and that
-number changes**; it is the one place the image's dimensions are hard-coded in
-CSS.
+**Below 768 px** the scrim is near-uniform (0.85 → 0.77). Narrow crops are
+unpredictable, so legibility cannot depend on which part of the photo lands
+behind the text. `object-position: 64% center` favours the right of the frame,
+so the anxious half is what crops away first — the half worth losing here.
 
 ### Legibility
 
@@ -328,22 +319,18 @@ composited pixels behind each line are sampled for the lightest one.
 
 | Width | Behind the headline | Behind the body |
 | --- | --- | --- |
-| 1440 px | `rgb(74, 81, 75)` — **7.59:1** | `rgb(33, 44, 37)` — **10.75:1** |
-| 1280 px | `rgb(74, 81, 75)` — **7.59:1** | `rgb(33, 44, 37)` — **10.75:1** |
-| ≤ 1199 px | solid scrim — **15.25:1** | solid scrim — **12.08:1** |
+| 1440 px | `rgb(31, 42, 35)` — **13.80:1** | `rgb(57, 66, 59)` — **7.91:1** |
+| 1280 px | `rgb(31, 42, 35)` — **13.80:1** | `rgb(58, 67, 61)` — **7.83:1** |
+| 390 px | `rgb(61, 66, 59)` — **9.56:1** | `rgb(61, 69, 63)` — **7.57:1** |
 
 The headline is large text, where AAA is 4.5:1; the body copy is normal text,
-where AAA is 7:1. Everything clears its own bar, and the headline clears the
-stricter normal-text bar as well. The band layout is far ahead of the others
-because its type sits on flat colour, not on the photograph.
+where AAA is 7:1. Everything clears its own bar. The body is the tighter of the
+two at every width, because it reaches further right than the headline, into the
+lighter end of the scrim.
 
-Dropping the copy below the faces improved these figures as a side effect —
-before the change the headline crossed the smiling candidate's lit face and
-measured 6.60:1. Ranging it left added a little more, since the left of the
-frame is the darker half. Raising the copy back up spends that margin again.
-
-`object-position: 50% center` keeps the crop centred on the seam, so the trim at
-very wide viewports takes an even bite out of each half instead of eating one.
+The mid-gradient stops were tuned against these numbers rather than by eye: with
+the ramp at `0.58` at 62% the body measured 6.76:1 — AA, but short of AAA — so it
+was moved to `0.62` at 66%.
 
 ## Illustrations
 
