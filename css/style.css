@@ -220,12 +220,18 @@ h3 {
    background-color is the scrim colour, so if the photograph is missing, slow,
    or fails to decode, the hero degrades to a solid dark band with the same
    cream type on it. It reads as a design choice rather than a fault. */
+/* Copy is pinned to the base of the section, leaving the upper part of the
+   frame — where both faces are — clear of text. */
 .hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: 4rem 3.5rem;
+  display: flex;
+  align-items: flex-end;
+  min-height: 32rem;
+  padding-block: 8rem 3rem;
   background-color: rgb(var(--hero-scrim));
+  text-align: center;
 }
 
 .hero__media {
@@ -235,14 +241,33 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Favours the right of the frame, where the handshake is. The anxious half
-     crops away first on narrow screens, which is the half worth losing. */
-  object-position: 64% center;
+  /* Centred, so the crop takes an even bite out of each half. */
+  object-position: 50% center;
 }
 
-/* Base scrim is near-uniform and heavy: on narrow screens the crop is
-   unpredictable, so legibility cannot depend on which part of the photo lands
-   behind the text. */
+/* Below 768px a cover crop is so narrow it can only ever show one half of the
+   diptych. So the photograph stops being a background and becomes a band: full
+   width at its own aspect ratio, whole frame visible, copy on the dark ground
+   underneath. The hero reserves exactly the band's height as padding — 1823 ÷
+   863 = 2.112 — so the two never overlap. */
+@media (max-width: 767px) {
+  .hero {
+    --hero-band: calc(100vw / 2.112);
+    min-height: 0;
+    padding-block: calc(var(--hero-band) + 2.5rem) 3rem;
+  }
+
+  /* Height wins over the inset, leaving the image at its natural ratio,
+     anchored to the top of the section. */
+  .hero__media {
+    height: auto;
+  }
+}
+
+/* Vertical scrim. Light over the top of the frame so both faces read, heavy
+   over the base where the copy sits. The two ends do different jobs: the top
+   stops is the photograph's exposure, the bottom stops are what make cream
+   type legible, so they are worth changing independently. */
 .hero::after {
   content: "";
   position: absolute;
@@ -250,17 +275,39 @@ h3 {
   z-index: -1;
   background: linear-gradient(
     180deg,
-    rgb(var(--hero-scrim) / 0.85),
-    rgb(var(--hero-scrim) / 0.77)
+    rgb(var(--hero-scrim) / 0.42) 0%,
+    rgb(var(--hero-scrim) / 0.5) 30%,
+    rgb(var(--hero-scrim) / 0.84) 58%,
+    rgb(var(--hero-scrim) / 0.93) 78%,
+    rgb(var(--hero-scrim) / 0.95) 100%
   );
 }
 
-/* Sized with the section headings below — see the shared rule under Sections. */
+/* The one piece of type on the page that is allowed to shout: it scales with
+   the viewport rather than stepping at the breakpoint, sets tighter than the
+   section headings, and closes with a short terracotta rule — the masthead
+   lockup's accent, and the only other place on the page that colour appears
+   besides the "Most Popular" badge. */
 .hero__title {
+  max-width: 44rem;
+  margin-inline: auto;
   margin-bottom: 1.5rem;
+  font-size: clamp(2.125rem, 5.2vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
   color: rgb(var(--on-forest));
   /* Short enough to run two lines, so even them up. */
   text-wrap: balance;
+}
+
+.hero__title::after {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 3px;
+  margin: 1.5rem auto 0;
+  border-radius: 2px;
+  background: rgb(var(--accent));
 }
 
 /* Body copy set in a column at a readable measure. Shared by the hero and any
@@ -275,13 +322,16 @@ h3 {
 }
 
 /* Overrides the shared colour above — the hero sits on the dark scrim. Kept
-   slightly under full cream so the headline still leads. */
+   slightly under full cream so the headline still leads. Centred under the
+   headline, and narrower than the prose measure elsewhere because centred text
+   is harder to track across a long line. */
 .hero__body {
+  max-width: 40rem;
+  margin-inline: auto;
   color: rgb(var(--on-forest) / 0.88);
 }
 
-/* Left-aligned under the copy, inside the heavy end of the desktop scrim, so it
-   sits with the text rather than floating over the photograph. */
+/* Sits at the base of the hero, in the heaviest part of the scrim. */
 .hero__actions {
   margin-top: 2.25rem;
 }
@@ -304,9 +354,8 @@ h3 {
   );
 }
 
-/* One size step for the hero headline and every section heading, so they stay
-   in step at both breakpoints. */
-.hero__title,
+/* One size step for every section heading. The hero headline used to share it;
+   it now scales on its own so it can lead the page. */
 .section__title {
   font-size: 1.875rem;
 }
@@ -809,42 +858,21 @@ h3 {
    ========================================================================== */
 
 @media (min-width: 768px) {
+  /* Taller, so the whole height of the frame fits and the copy has room to sit
+     below both faces rather than across them. */
   .hero {
-    padding-block: 6rem 5rem;
-    min-height: 30rem;
-    display: flex;
-    align-items: center;
-  }
-
-  /* Wide enough to show the whole frame, so the scrim turns directional:
-     heaviest over the copy on the left, lifting toward the handshake on the
-     right so that half of the photograph stays legible. */
-  .hero::after {
-    background: linear-gradient(
-      95deg,
-      rgb(var(--hero-scrim) / 0.94) 0%,
-      rgb(var(--hero-scrim) / 0.88) 34%,
-      rgb(var(--hero-scrim) / 0.58) 62%,
-      rgb(var(--hero-scrim) / 0.32) 100%
-    );
+    min-height: 40rem;
+    padding-block: 11rem 4.5rem;
   }
 
   .hero .container {
     width: 100%;
   }
 
-  /* Held well inside the scrim's heavy end so the copy never drifts onto the
-     bright right-hand side of the photograph. */
-  .hero__title,
-  .hero__body {
-    max-width: 34rem;
-  }
-
   .section {
     padding-block: 5rem;
   }
 
-  .hero__title,
   .section__title {
     font-size: 2.25rem;
   }

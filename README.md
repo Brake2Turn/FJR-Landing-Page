@@ -120,8 +120,9 @@ Straight from the brand guide, defined once at the top of `css/style.css`:
 | Neutral | Warm Cream | `#FAF6F0` |
 | Neutral | Charcoal Text | `#2B2B28` |
 
-Terracotta appears exactly once, on the "Most Popular" badge, per the guide's
-"use sparingly" note. There the badge sweeps terracotta → champagne
+Terracotta appears twice, per the guide's "use sparingly" note: the rule under
+the hero headline, and the "Most Popular" badge. There the badge sweeps
+terracotta → champagne
 (`#E5C185`) → terracotta so it reads as premium rather than as a status chip.
 Champagne is a highlight stop for that gradient only, not a sixth brand
 colour. The label stays charcoal, which clears 4.5:1 at every point along the
@@ -251,7 +252,16 @@ images/favicon.svg    FJR monogram favicon
 
 ## Hero photograph
 
-The hero is a photograph behind a dark scrim, with the copy over it.
+The hero is a photograph behind a dark scrim on wide screens, and a photograph
+above the copy on narrow ones. See "Showing both halves" below for why it
+switches.
+
+The headline — *Practice an Interview Before the Real Thing* — is the one piece
+of type on the page allowed to shout. It scales fluidly with
+`clamp(2.125rem, 5.2vw, 3.5rem)` rather than stepping at the breakpoint, sets
+tighter than the section headings, and closes with a short terracotta rule
+(`.hero__title::after`). That rule and the "Most Popular" badge are the only two
+places the accent colour appears.
 
 | File | Size | Dimensions |
 | --- | --- | --- |
@@ -279,35 +289,50 @@ full-width photo as PNG costs well over a megabyte on the first paint.
 scrim. A missing, slow or undecodable image leaves a solid dark band carrying
 the same cream type — a deliberate-looking hero rather than a broken one.
 
+### Showing both halves
+
+The photograph is a **diptych**: the same person anxious on the left, shaking
+hands on the right. That only works if a visitor sees both halves, which drives
+the whole hero layout.
+
+**At 768 px and up** the copy is centred and pinned to the bottom of the
+section (`align-items: flex-end`), and the scrim runs **top to bottom** rather
+than left to right — 0.42 over the faces, 0.95 at the base where the type is.
+An earlier version weighted the scrim to the left, which read well but blacked
+out the anxious half almost entirely. `min-height: 40rem` gives the photo enough
+height that the whole frame fits with only a small crop off each side, and the
+headline lands in the gap between the two figures.
+
+**Below 768 px** a cover crop is so narrow it can only ever hold one half, so
+the photo stops being a background: it becomes a full-width band at its own
+aspect ratio, whole frame visible, with the copy on the dark ground beneath. The
+hero reserves exactly the band's height as padding — `calc(100vw / 2.112)`, the
+image's own ratio — so the two never collide. **Change the photo and that number
+changes**; it is the one place the image's dimensions are hard-coded in CSS.
+
 ### Legibility
 
 Cream on a photograph only works if the scrim guarantees it, so the scrim is
 measured, not eyeballed: the hero is rendered with its text hidden and the real
 composited pixels behind each line are sampled for the lightest one.
 
-| Width | Lightest background behind the copy | Cream on it |
+| Width | Behind the headline | Behind the body |
 | --- | --- | --- |
-| 1280 px | `rgb(71, 79, 72)` | **7.87:1** |
-| 360 px | `rgb(64, 71, 65)` | **8.88:1** |
+| 1440 px | `rgb(105, 84, 69)` — **6.60:1** | `rgb(57, 67, 61)` — **7.86:1** |
+| 1280 px | `rgb(104, 83, 68)` — **6.70:1** | `rgb(58, 68, 66)` — **7.70:1** |
+| ≤ 767 px | solid scrim — **15.25:1** | solid scrim — **12.08:1** |
 
-Both clear WCAG AAA (7:1). Desktop is the tighter of the two, because the bright
-window in the upper right of the frame reaches the right edge of the text column.
+The headline is large text, where AAA is 4.5:1; the body copy is normal text,
+where AAA is 7:1. Everything clears its own bar. The narrow layout is far ahead
+of the others because its type sits on flat colour, not on the photograph.
 
-Two mechanisms hold that up, and both matter if the layout changes:
+The tightest figure is the headline on a wide screen, and the reason is the
+smiling candidate's lit face, which is what the headline crosses. Lightening the
+top of the scrim further, or moving the copy up into the faces, spends that
+margin.
 
-- **Below 768 px** the scrim is near-uniform (0.85 → 0.77). Narrow crops are
-  unpredictable, so legibility cannot depend on which part of the photo lands
-  behind the text. It was originally heavier still, and was lightened once
-  measurement showed the headroom — at 0.90 the photograph barely read on a
-  phone.
-- **At 768 px and up** the scrim turns directional — 0.94 at the left where the
-  copy sits, lifting to 0.32 at the right so the handshake stays visible — and
-  the copy is capped at `34rem` to keep it inside the heavy end. Widening that
-  cap, or lightening the left stop, would push the desktop figure below AAA.
-
-`object-position: 64% center` favours the right of the frame. At desktop widths
-the full width of the photo fits, so it only affects narrow screens, where it
-keeps the handshake rather than the anxious half.
+`object-position: 50% center` keeps the crop centred on the seam, so the trim at
+very wide viewports takes an even bite out of each half instead of eating one.
 
 ## Illustrations
 
