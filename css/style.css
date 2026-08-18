@@ -231,7 +231,6 @@ h3 {
   min-height: 32rem;
   padding-block: 8rem 3rem;
   background-color: rgb(var(--hero-scrim));
-  text-align: center;
 }
 
 .hero__media {
@@ -308,7 +307,6 @@ h3 {
    besides the "Most Popular" badge. */
 .hero__title {
   max-width: 44rem;
-  margin-inline: auto;
   margin-bottom: 1.5rem;
   font-size: clamp(2.125rem, 5.2vw, 3.5rem);
   line-height: 1.08;
@@ -323,7 +321,7 @@ h3 {
   display: block;
   width: 4rem;
   height: 3px;
-  margin: 1.5rem auto 0;
+  margin: 1.5rem 0 0;
   border-radius: 2px;
   background: rgb(var(--accent));
 }
@@ -340,12 +338,10 @@ h3 {
 }
 
 /* Overrides the shared colour above — the hero sits on the dark scrim. Kept
-   slightly under full cream so the headline still leads. Centred under the
-   headline, and narrower than the prose measure elsewhere because centred text
-   is harder to track across a long line. */
+   slightly under full cream so the headline still leads. Ranged left with the
+   headline, and held to a shorter measure so the block reads as one column. */
 .hero__body {
-  max-width: 40rem;
-  margin-inline: auto;
+  max-width: 38rem;
   color: rgb(var(--on-forest) / 0.88);
 }
 
