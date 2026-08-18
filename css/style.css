@@ -245,12 +245,17 @@ h3 {
   object-position: 50% center;
 }
 
-/* Below 768px a cover crop is so narrow it can only ever show one half of the
-   diptych. So the photograph stops being a background and becomes a band: full
-   width at its own aspect ratio, whole frame visible, copy on the dark ground
-   underneath. The hero reserves exactly the band's height as padding — 1823 ÷
-   863 = 2.112 — so the two never overlap. */
-@media (max-width: 767px) {
+/* The superimposed layout needs the section to be tall enough to hold the copy
+   below both faces, and a tall section fills with a wide photo by cropping its
+   sides — the narrower the viewport, the more of the frame is lost. Past about
+   1200px the crop still leaves both figures whole; below that it starts eating
+   the anxious half.
+
+   So under 1200px the photograph stops being a background and becomes a band:
+   full width at its own aspect ratio, whole frame visible, copy on the dark
+   ground underneath. The hero reserves exactly the band's height as padding —
+   1823 ÷ 863 = 2.112 — so the two never overlap. */
+@media (max-width: 1199px) {
   .hero {
     --hero-band: calc(100vw / 2.112);
     min-height: 0;
@@ -261,6 +266,18 @@ h3 {
      anchored to the top of the section. */
   .hero__media {
     height: auto;
+  }
+}
+
+/* Both faces sit between roughly 12% and 44% of the frame's height, and the
+   copy block runs about 500px. The section is tall enough that the copy,
+   pinned to the bottom, starts below the faces rather than across them.
+   Shortening this — or adding a line to the hero copy — puts type back over
+   them. */
+@media (min-width: 1200px) {
+  .hero {
+    min-height: 54rem;
+    padding-block: 14rem 4.5rem;
   }
 }
 
@@ -275,11 +292,12 @@ h3 {
   z-index: -1;
   background: linear-gradient(
     180deg,
-    rgb(var(--hero-scrim) / 0.42) 0%,
-    rgb(var(--hero-scrim) / 0.5) 30%,
-    rgb(var(--hero-scrim) / 0.84) 58%,
-    rgb(var(--hero-scrim) / 0.93) 78%,
-    rgb(var(--hero-scrim) / 0.95) 100%
+    rgb(var(--hero-scrim) / 0.32) 0%,
+    rgb(var(--hero-scrim) / 0.38) 30%,
+    rgb(var(--hero-scrim) / 0.55) 42%,
+    rgb(var(--hero-scrim) / 0.9) 55%,
+    rgb(var(--hero-scrim) / 0.95) 75%,
+    rgb(var(--hero-scrim) / 0.96) 100%
   );
 }
 
@@ -860,11 +878,6 @@ h3 {
 @media (min-width: 768px) {
   /* Taller, so the whole height of the frame fits and the copy has room to sit
      below both faces rather than across them. */
-  .hero {
-    min-height: 40rem;
-    padding-block: 11rem 4.5rem;
-  }
-
   .hero .container {
     width: 100%;
   }

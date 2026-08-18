@@ -252,9 +252,8 @@ images/favicon.svg    FJR monogram favicon
 
 ## Hero photograph
 
-The hero is a photograph behind a dark scrim on wide screens, and a photograph
-above the copy on narrow ones. See "Showing both halves" below for why it
-switches.
+The hero is a photograph behind a dark scrim at 1200 px and up, and a photograph
+above the copy below that. See "Showing both halves" below for why it switches.
 
 The headline — *Practice an Interview Before the Real Thing* — is the one piece
 of type on the page allowed to shout. It scales fluidly with
@@ -295,20 +294,31 @@ The photograph is a **diptych**: the same person anxious on the left, shaking
 hands on the right. That only works if a visitor sees both halves, which drives
 the whole hero layout.
 
-**At 768 px and up** the copy is centred and pinned to the bottom of the
+**At 1200 px and up** the copy is centred and pinned to the bottom of the
 section (`align-items: flex-end`), and the scrim runs **top to bottom** rather
-than left to right — 0.42 over the faces, 0.95 at the base where the type is.
-An earlier version weighted the scrim to the left, which read well but blacked
-out the anxious half almost entirely. `min-height: 40rem` gives the photo enough
-height that the whole frame fits with only a small crop off each side, and the
-headline lands in the gap between the two figures.
+than left to right — 0.32 over the faces, 0.96 at the base where the type is. An
+earlier version weighted the scrim to the left, which read well but blacked out
+the anxious half almost entirely.
 
-**Below 768 px** a cover crop is so narrow it can only ever hold one half, so
-the photo stops being a background: it becomes a full-width band at its own
-aspect ratio, whole frame visible, with the copy on the dark ground beneath. The
-hero reserves exactly the band's height as padding — `calc(100vw / 2.112)`, the
-image's own ratio — so the two never collide. **Change the photo and that number
-changes**; it is the one place the image's dimensions are hard-coded in CSS.
+Both faces sit between roughly 12% and 44% of the frame's height, and the copy
+block runs about 500 px, so `min-height: 54rem` is what it takes for the copy to
+start *below* the faces rather than across them. Shortening that, or adding a
+line to the hero copy, puts type back over a face. It does make for a tall hero:
+the "Book Now" button lands near the fold on a short laptop screen. Trimming the
+hero's first paragraph — which duplicates the opening of "Why This Works" —
+would buy back about 100 px.
+
+**Below 1200 px** the photo stops being a background: it becomes a full-width
+band at its own aspect ratio, whole frame visible, with the copy on the dark
+ground beneath. The reason is that a tall section fills with a wide photo by
+cropping its sides — at 1200 px the crop still leaves both figures whole, but at
+1024 px it starts eating the anxious half, and by 768 px only the middle 42% of
+the frame survives. A band shows all of it at any width.
+
+The hero reserves exactly the band's height as padding — `calc(100vw / 2.112)`,
+the image's own ratio — so the two never collide. **Change the photo and that
+number changes**; it is the one place the image's dimensions are hard-coded in
+CSS.
 
 ### Legibility
 
@@ -318,18 +328,18 @@ composited pixels behind each line are sampled for the lightest one.
 
 | Width | Behind the headline | Behind the body |
 | --- | --- | --- |
-| 1440 px | `rgb(105, 84, 69)` — **6.60:1** | `rgb(57, 67, 61)` — **7.86:1** |
-| 1280 px | `rgb(104, 83, 68)` — **6.70:1** | `rgb(58, 68, 66)` — **7.70:1** |
-| ≤ 767 px | solid scrim — **15.25:1** | solid scrim — **12.08:1** |
+| 1440 px | `rgb(77, 85, 81)` — **7.13:1** | `rgb(37, 49, 43)` — **10.05:1** |
+| 1280 px | `rgb(77, 85, 81)` — **7.13:1** | `rgb(36, 47, 41)` — **10.31:1** |
+| ≤ 1199 px | solid scrim — **15.25:1** | solid scrim — **12.08:1** |
 
 The headline is large text, where AAA is 4.5:1; the body copy is normal text,
-where AAA is 7:1. Everything clears its own bar. The narrow layout is far ahead
-of the others because its type sits on flat colour, not on the photograph.
+where AAA is 7:1. Everything clears its own bar, and the headline clears the
+stricter normal-text bar as well. The band layout is far ahead of the others
+because its type sits on flat colour, not on the photograph.
 
-The tightest figure is the headline on a wide screen, and the reason is the
-smiling candidate's lit face, which is what the headline crosses. Lightening the
-top of the scrim further, or moving the copy up into the faces, spends that
-margin.
+Dropping the copy below the faces improved these figures as a side effect —
+before the change the headline crossed the smiling candidate's lit face and
+measured 6.60:1. Raising the copy back up spends that margin again.
 
 `object-position: 50% center` keeps the crop centred on the seam, so the trim at
 very wide viewports takes an even bite out of each half instead of eating one.
