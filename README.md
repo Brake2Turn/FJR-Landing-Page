@@ -332,6 +332,28 @@ The mid-gradient stops were tuned against these numbers rather than by eye: with
 the ramp at `0.58` at 62% the body measured 6.76:1 — AA, but short of AAA — so it
 was moved to `0.62` at 66%.
 
+## Coach portrait
+
+`images/coach.jpg` sits beside the "Why This Works" copy. That section is the
+only first-person writing on the page, so it is the one place a face answers a
+question the reader is already asking — *who is "I"?* It stacks above the copy
+at byline size on a phone, and runs as a second column from 768 px where it is
+large enough to carry a face.
+
+| File | Size | Dimensions |
+| --- | --- | --- |
+| `images/coach.jpg` | 90 KB | 800 × 1000 |
+| `images/coach-400.jpg` | 27 KB | 400 × 500 |
+
+Supplied as a 4.6 MB PNG at 1664 × 2080. Re-encoded here to progressive JPEG at
+quality 82, with a little headroom cropped off the top and 4:5 held exactly so
+the CSS never has to correct the ratio. **97% smaller**, and lazy-loaded, since
+it sits below the fold.
+
+> The `alt` text reads "Your coach at First Job Ready" because the page still
+> names nobody. It should become the coach's actual name, in the alt text and in
+> a visible byline — a face without a name does only half the work.
+
 ## Illustrations
 
 There are none on the page, and no placeholders left either.

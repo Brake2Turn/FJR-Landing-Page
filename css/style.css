@@ -339,6 +339,43 @@ h3 {
 }
 
 /* ==========================================================================
+   Coach portrait
+   --------------------------------------------------------------------------
+   Stacked on a phone, where the photo is small enough to read as a byline and
+   the copy still starts near the top of the screen; two columns from 768px,
+   where it can sit at a size that carries a face.
+   ========================================================================== */
+
+.coach {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: start;
+}
+
+/* The 4:5 ratio is baked into the file itself, so width alone sizes it and
+   the intrinsic width/height attributes still reserve the right box. */
+.coach__photo {
+  width: 8rem;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(var(--primary) / 0.3);
+  box-shadow: 0 1px 2px 0 rgb(43 43 40 / 0.06),
+    0 12px 20px -16px rgb(43 43 40 / 0.5);
+}
+
+@media (min-width: 768px) {
+  .coach {
+    grid-template-columns: 16rem 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .coach__photo {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
    Trust badges — three scannable markers under the "Why This Works" copy
    --------------------------------------------------------------------------
    A wrapping flex row, so they sit side by side on a desktop and stack down
