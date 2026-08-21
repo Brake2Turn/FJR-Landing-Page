@@ -391,6 +391,21 @@ h3 {
   gap: 0.75rem;
 }
 
+/* Three equal columns rather than three intrinsic widths. The badges sum to
+   within a few pixels of the container, so whether they fit on one line would
+   otherwise depend on the exact metrics of whichever font has loaded — and a
+   single orphaned badge on a second row is the one outcome worth ruling out. */
+@media (min-width: 768px) {
+  .trust {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .trust__item {
+    justify-content: center;
+  }
+}
+
 .trust__item {
   display: flex;
   align-items: center;
@@ -526,6 +541,8 @@ h3 {
   gap: 1.5rem;
   padding: 2rem;
   border-radius: 0.75rem;
+  /* Mitres the full-bleed banner to the card's rounded top corners. */
+  overflow: hidden;
   border: 1px solid rgb(var(--primary) / 0.25);
   background: rgb(var(--surface));
   box-shadow: 0 1px 2px 0 rgb(43 43 40 / 0.06);
@@ -556,15 +573,17 @@ h3 {
   }
 }
 
-/* Terracotta is a highlight only — this badge is its single use on the page.
-   The sweep into champagne reads as premium rather than as a status chip; the
-   hairline and lifted shadow do the rest without adding a sixth colour. */
-.package__badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
+/* A banner across the head of the card. Negative margins pull it out to the
+   padding edge; the card's own overflow: hidden mitres it to the rounded top
+   corners, so it needs no radius of its own and nothing to maintain if the
+   card's radius or border width changes.
+
+   Terracotta stays a highlight: the "Most Popular" sweep into champagne is its
+   only use here, and the sale banner takes Deep Forest instead so the two read
+   as different kinds of label rather than competing for the same attention. */
+.package__banner {
+  margin: -2rem -2rem 0;
+  padding: 0.6rem 1rem;
   background: linear-gradient(
     115deg,
     rgb(var(--accent)) 0%,
@@ -572,13 +591,19 @@ h3 {
     rgb(var(--accent-gold)) 70%,
     rgb(var(--accent)) 100%
   );
-  border: 1px solid rgb(255 255 255 / 0.45);
   color: rgb(var(--foreground));
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.4;
-  letter-spacing: 0.01em;
-  box-shadow: 0 1px 3px rgb(43 43 40 / 0.18);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Cream on Deep Forest, 9.02:1. */
+.package__banner--sale {
+  background: rgb(var(--forest));
+  color: rgb(var(--on-forest));
 }
 
 .package__head {
@@ -588,12 +613,6 @@ h3 {
 .package__name {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
-}
-
-/* Reserve room for the absolutely-positioned badge so the heading wraps
-   instead of running underneath it on narrow cards. */
-.package--featured .package__name {
-  padding-right: 7rem;
 }
 
 /* Sans-serif: the price is UI text, not a headline. */

@@ -23,13 +23,12 @@ two coaching sections meant moving the class between them.
 
 "Why This Works" replaced "About Your Coach": same slot, first-person copy, and
 three trust markers (`.trust`) sitting side by side under the prose instead of
-being stated inside it. They are a wrapping flex row, so they stack on a phone
-without needing a breakpoint.
-
-> The third marker reads "Dozens of interviews conducted" to agree with the copy
-> directly above it, which says *dozens*. If the real figure is 100+, change both
-> together — a badge claiming 100+ over a paragraph saying dozens undercuts the
-> section it is meant to support.
+being stated inside it. They wrap and stack on a phone; from 768 px they become
+three equal grid columns rather than three intrinsic widths. That is deliberate:
+their natural widths total within about eight pixels of the container, so on a
+flex row whether they fit on one line depends on the metrics of whichever font
+has loaded, and a single orphaned badge on a second row is the one outcome worth
+ruling out.
 
 "What We Coach" is a row of three equal cards (`.topics` / `.topic`). Grid gives
 them a shared row height whatever length the copy runs to.
@@ -88,7 +87,7 @@ things off the original design:
 1. The header banner and footer are now **Deep Forest** (the guide assigns that
    colour to both).
 2. Page backgrounds are **Warm Cream**, not white ("keep backgrounds warm").
-3. The "Most Popular" badge label is charcoal rather than white — white on
+3. The "Most Popular" banner label is charcoal rather than white — white on
    terracotta measures 2.7:1, which is unreadable. Charcoal gives 5.3:1.
 
 ## Logo
@@ -121,7 +120,7 @@ Straight from the brand guide, defined once at the top of `css/style.css`:
 | Neutral | Charcoal Text | `#2B2B28` |
 
 Terracotta appears twice, per the guide's "use sparingly" note: the rule under
-the hero headline, and the "Most Popular" badge. There the badge sweeps
+the hero headline, and the "Most Popular" banner. There the banner sweeps
 terracotta → champagne
 (`#E5C185`) → terracotta so it reads as premium rather than as a status chip.
 Champagne is a highlight stop for that gradient only, not a sixth brand
@@ -153,6 +152,23 @@ only, sans-serif for body copy, buttons and UI text:
 - **Inter** (300–700) — body copy, buttons, prices, UI
 
 Both load from Google Fonts.
+
+## Package banners
+
+Each pricing card carries a full-width banner across its head, rather than the
+pill that used to float in the top-right corner: **Sale Price** on the
+20-minute session, **Most Popular** on the 60-minute one.
+
+The banner has no radius of its own. Negative margins pull it out to the card's
+padding edge and the card's `overflow: hidden` mitres it to the rounded top
+corners, so nothing needs adjusting if the radius or the border width changes —
+and the featured card's 2px border is handled without a special case.
+
+The two are coloured apart on purpose. "Most Popular" keeps the terracotta →
+champagne sweep with a charcoal label; the sale banner is Deep Forest with cream
+type (9.02:1). Two identical banners would have read as one repeated component
+rather than as two different kinds of claim — and a second terracotta bar would
+have spent the accent colour twice in the same row.
 
 ## Booking
 
@@ -260,8 +276,8 @@ The headline — *Practice an Interview Before the Real Thing* — is the one pi
 of type on the page allowed to shout. It scales fluidly with
 `clamp(2rem, 4.4vw, 3rem)` rather than stepping at the breakpoint, sets tighter
 than the section headings, and closes with a short terracotta rule
-(`.hero__title::after`). That rule and the "Most Popular" badge are the only two
-places the accent colour appears.
+(`.hero__title::after`). That rule and the "Most Popular" banner are the only
+two places the accent colour appears.
 
 | File | Size | Dimensions |
 | --- | --- | --- |
