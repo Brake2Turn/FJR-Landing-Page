@@ -376,6 +376,26 @@ it will change the height of the column.
 > names nobody. It should become the coach's actual name, in the alt text and in
 > a visible byline — a face without a name does only half the work.
 
+## Outcome photograph
+
+`images/outcome.jpg` sits beside the steps in "What Happens After You Book" —
+the thing the steps are for, next to the steps themselves, rather than floating
+above or below where it would read as decoration between two sections.
+
+| File | Size | Dimensions |
+| --- | --- | --- |
+| `images/outcome.jpg` | 75 KB | 880 × 660 |
+| `images/outcome-480.jpg` | 30 KB | 480 × 360 |
+
+Supplied as a 1.9 MB PNG at 1448 × 1086, already a clean 4:3, so it needed no
+crop. Re-encoded to progressive JPEG at quality 82 in two sizes through
+`srcset`: **96% smaller**, and lazy-loaded.
+
+The two columns start at **960px**, not the usual 768px. With a 26rem image
+beside it the steps column would be about 257px at 768px, which wraps every
+step onto two lines; below 960px the photo stacks under the steps at full
+width instead.
+
 ## Illustrations
 
 There are none on the page, and no placeholders left either.

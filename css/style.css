@@ -719,6 +719,34 @@ h3 {
    Steps
    ========================================================================== */
 
+/* Steps beside the photograph from 768px, stacked below it on a phone. The
+   steps column is given the larger share: three lines of type need the width
+   more than the image does, and the image has a fixed ratio to fill. */
+.after {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Not at the usual 768px: with a 26rem image beside it the steps column would
+   be about 257px there, which wraps every step onto two lines. It waits until
+   there is room for both. */
+@media (min-width: 960px) {
+  .after {
+    grid-template-columns: 1fr 26rem;
+    gap: 3rem;
+  }
+}
+
+.after__photo {
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(var(--primary) / 0.25);
+  box-shadow: 0 1px 2px 0 rgb(43 43 40 / 0.06),
+    0 14px 24px -18px rgb(43 43 40 / 0.5);
+}
+
 .steps {
   display: flex;
   flex-direction: column;

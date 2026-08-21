@@ -328,31 +328,48 @@
 
     <div class="rule" role="presentation"></div>
 
-    <!-- After booking -->
+    <!-- After booking ---------------------------------------------------------
+      Steps on one side, the outcome on the other. The photograph is what the
+      steps are for, so it sits beside them rather than above or below, where it
+      would read as decoration between two sections.
+    -->
     <section class="section">
       <div class="container">
         <h2 class="section__title section__title--tight">
           What Happens After You Book
         </h2>
 
-        <ol class="steps">
-          <li class="step">
-            <span class="step__marker" aria-hidden="true">1</span>
-            <h3 class="step__title">Pick an available session</h3>
-          </li>
-          <li class="step">
-            <span class="step__marker" aria-hidden="true">2</span>
-            <h3 class="step__title">
-              Choose whether you'd like to attend in person or online
-            </h3>
-          </li>
-          <li class="step">
-            <span class="step__marker" aria-hidden="true">3</span>
-            <h3 class="step__title">
-              Attend the session, we'll guide you through
-            </h3>
-          </li>
-        </ol>
+        <div class="after">
+          <ol class="steps">
+            <li class="step">
+              <span class="step__marker" aria-hidden="true">1</span>
+              <h3 class="step__title">Pick an available session</h3>
+            </li>
+            <li class="step">
+              <span class="step__marker" aria-hidden="true">2</span>
+              <h3 class="step__title">
+                Choose whether you'd like to attend in person or online
+              </h3>
+            </li>
+            <li class="step">
+              <span class="step__marker" aria-hidden="true">3</span>
+              <h3 class="step__title">
+                Attend the session, we'll guide you through
+              </h3>
+            </li>
+          </ol>
+
+          <img
+            class="after__photo"
+            src="images/outcome.jpg"
+            srcset="images/outcome-480.jpg 480w, images/outcome.jpg 880w"
+            sizes="(min-width: 768px) 26rem, 100vw"
+            width="880"
+            height="660"
+            alt="A woman reading a job offer letter outside an office, delighted."
+            loading="lazy"
+            decoding="async" />
+        </div>
       </div>
     </section>
 
