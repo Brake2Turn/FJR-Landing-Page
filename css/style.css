@@ -578,20 +578,16 @@ h3 {
    corners, so it needs no radius of its own and nothing to maintain if the
    card's radius or border width changes.
 
-   Terracotta stays a highlight: the "Most Popular" sweep into champagne is its
-   only use here, and the sale banner takes Deep Forest instead so the two read
-   as different kinds of label rather than competing for the same attention. */
+   The two are coloured apart so they read as different kinds of label rather
+   than competing for the same attention: Deep Forest with cream type (9.02:1)
+   is the default, and the sale takes the terracotta sweep into champagne —
+   terracotta's only use here, and the brighter of the two treatments, on the
+   card the page is discounting. */
 .package__banner {
   margin: -2rem -2rem 0;
   padding: 0.6rem 1rem;
-  background: linear-gradient(
-    115deg,
-    rgb(var(--accent)) 0%,
-    rgb(var(--accent-gold)) 55%,
-    rgb(var(--accent-gold)) 70%,
-    rgb(var(--accent)) 100%
-  );
-  color: rgb(var(--foreground));
+  background: rgb(var(--forest));
+  color: rgb(var(--on-forest));
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.4;
@@ -600,10 +596,17 @@ h3 {
   text-align: center;
 }
 
-/* Cream on Deep Forest, 9.02:1. */
+/* Charcoal on the sweep, 5.28:1 at its darkest stops. White would fall to
+   1.71:1 over the champagne, which is why the label is not cream here. */
 .package__banner--sale {
-  background: rgb(var(--forest));
-  color: rgb(var(--on-forest));
+  background: linear-gradient(
+    115deg,
+    rgb(var(--accent)) 0%,
+    rgb(var(--accent-gold)) 55%,
+    rgb(var(--accent-gold)) 70%,
+    rgb(var(--accent)) 100%
+  );
+  color: rgb(var(--foreground));
 }
 
 .package__head {

@@ -164,11 +164,12 @@ padding edge and the card's `overflow: hidden` mitres it to the rounded top
 corners, so nothing needs adjusting if the radius or the border width changes —
 and the featured card's 2px border is handled without a special case.
 
-The two are coloured apart on purpose. "Most Popular" keeps the terracotta →
-champagne sweep with a charcoal label; the sale banner is Deep Forest with cream
-type (9.02:1). Two identical banners would have read as one repeated component
-rather than as two different kinds of claim — and a second terracotta bar would
-have spent the accent colour twice in the same row.
+The two are coloured apart on purpose. The sale banner takes the terracotta →
+champagne sweep with a charcoal label (5.28:1 at its darkest stops; white would
+fall to 1.71:1 over the champagne, which is why the label is not cream there),
+and "Most Popular" is Deep Forest with cream type (9.02:1). Two identical
+banners would have read as one repeated component rather than as two different
+kinds of claim.
 
 ## Booking
 
