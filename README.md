@@ -342,13 +342,18 @@ large enough to carry a face.
 
 | File | Size | Dimensions |
 | --- | --- | --- |
-| `images/coach.jpg` | 90 KB | 800 × 1000 |
-| `images/coach-400.jpg` | 27 KB | 400 × 500 |
+| `images/coach.jpg` | 110 KB | 800 × 1000 |
+| `images/coach-400.jpg` | 32 KB | 400 × 500 |
 
-Supplied as a 4.6 MB PNG at 1664 × 2080. Re-encoded here to progressive JPEG at
-quality 82, with a little headroom cropped off the top and 4:5 held exactly so
-the CSS never has to correct the ratio. **97% smaller**, and lazy-loaded, since
-it sits below the fold.
+Supplied as a 2.1 MB PNG at 1086 × 1448 — a 3:4 frame, where the slot is 4:5.
+The 91 px difference comes off the top, since there is generous headroom above
+the hair and none to spare below the collar. Re-encoded to progressive JPEG at
+quality 82 in two sizes wired through `srcset`: **95% smaller**, and
+lazy-loaded, since it sits below the fold.
+
+Any replacement should be cropped to 4:5 the same way. The ratio is carried by
+the file rather than by CSS, so a differently shaped photo will not letterbox —
+it will change the height of the column.
 
 > The `alt` text reads "Your coach at First Job Ready" because the page still
 > names nobody. It should become the coach's actual name, in the alt text and in
