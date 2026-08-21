@@ -15,13 +15,13 @@ static files.
 breakpoints, card treatments, hover states and gradient dividers are all derived
 from the original Manus markup.
 
-Section order has since diverged. It now runs: hero, Why This Works, What We
+Section order has since diverged. It now runs: hero, Why Me?, What We
 Coach, Coaching Packages, What Happens After You Book, FAQ. Tinted and plain
 backgrounds alternate down the page, so adding or reordering a section means
 checking that `.section--tinted` still lands on every other one — reordering the
 two coaching sections meant moving the class between them.
 
-"Why This Works" replaced "About Your Coach": same slot, first-person copy, and
+"Why Me?" replaced "About Your Coach": same slot, first-person copy, and
 three trust markers (`.trust`) sitting side by side under the prose instead of
 being stated inside it. They wrap and stack on a phone; from 768 px they become
 three equal grid columns rather than three intrinsic widths. That is deliberate:
@@ -63,7 +63,7 @@ border and a heavier shadow. Three things about that:
   therefore show no hover at all, by design.
 
 **Copy has since moved on.** The hero and "What We Coach" were rewritten, and
-"Why This Works" and the FAQ are new. Only the pricing cards, the steps and the
+"Why Me?" and the FAQ are new. Only the pricing cards, the steps and the
 footer still carry original wording.
 
 **Audience is early-career, not teens.** The word "teen" appears nowhere on the
@@ -350,7 +350,7 @@ was moved to `0.62` at 66%.
 
 ## Coach portrait
 
-`images/coach.jpg` sits beside the "Why This Works" copy. That section is the
+`images/coach.jpg` sits beside the "Why Me?" copy. That section is the
 only first-person writing on the page, so it is the one place a face answers a
 question the reader is already asking — *who is "I"?* It stacks above the copy
 at byline size on a phone, and runs as a second column from 768 px where it is
